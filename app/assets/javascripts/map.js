@@ -216,7 +216,7 @@ function addLostPetsMarker(location, map) {
     position: location,
     // label: label,
     map: map,
-    icon: 'assets/icon_report_lost_red.png'
+    icon: 'https://s3-us-west-2.amazonaws.com/codecore15t2groupproject/assets/icon_report_lost_red.png'
   });
   markers.push(marker);
 }
@@ -243,7 +243,7 @@ function addSightingsMarker(data, map) {
       var marker = new google.maps.Marker({
         position: { lat: data[i].lat, lng: data[i].lng },
         map: map,
-        icon: 'assets/icon_report_found_green_active.png'
+        icon: 'https://s3-us-west-2.amazonaws.com/codecore15t2groupproject/assets/icon_report_found_green_active.png'
       });
       markers.push(marker);
     }
