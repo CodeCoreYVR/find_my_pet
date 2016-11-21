@@ -342,7 +342,7 @@ var getSightingsOfaPet = function(pet_id){
     type: "get", //send it through get method
     data:{id: pet_id},
     success: function(data) {
-      window.globals.sightings = data;``
+      window.globals.sightings = data;
       addSightingsMarker(data, map);
     },
     error: function(xhr) {
