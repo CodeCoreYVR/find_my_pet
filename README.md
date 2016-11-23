@@ -1,17 +1,19 @@
 # README
 
-Project Description
+# Find My Pet #
+
+## Project Description ##
 
 Find my Pet is a web application which is intended to be used as a place for pet owners
 to report missing pets, for the public to report missing pet sightings, with the intention
 of reuniting missing pets with their owners.
 
-Setup Instructions:
+## Setup Instructions: ##
 
 - rails db:create db:migrate db:seed
 - bundle
 
-Keys required:
+## Keys required: ##
 
 ENV["email_user_name"] = "..."
 ENV["email_password"]  = "..."
@@ -24,6 +26,6 @@ ENV['FACEBOOK_APP_SECRET'] = "..."
 ENV['aws_access_key_id'] = "..."
 ENV['aws_access_secret'] = "..."
 
-List Of Contributors:
+### List Of Contributors: ###
 
 *TBA*
