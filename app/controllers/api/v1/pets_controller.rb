@@ -1,4 +1,4 @@
-class Api::V1::PetsController < ApplicationController
+class Api < V1 < PetsController < ApplicationController
   protect_from_forgery with: :null_session
 
   def index

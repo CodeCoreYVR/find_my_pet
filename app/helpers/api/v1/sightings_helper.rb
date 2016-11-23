@@ -1,2 +1,6 @@
-module Api::V1::SightingsHelper
+module Api
+  module V1
+    module SightingsHelper
+    end
+  end
 end

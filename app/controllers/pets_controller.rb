@@ -34,12 +34,7 @@ class PetsController < ApplicationController
     if @pet.update pet_params
       if @pet.tweet_this
         @pet.tweet_this = false
-        client = Twitter::REST::Client.new do |config|
-          config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
-          config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
-          config.access_token        = current_user.oauth_token
-          config.access_token_secret = current_user.oauth_secret
-        end
+        client = config_twitter
         client.update(social_message)
         flash[:notice] = 'Tweet sent'
       elsif @pet.share_on_facebook
@@ -64,14 +59,16 @@ class PetsController < ApplicationController
     if @pet.image.present?
       render layout: 'print'
     else
-      redirect_to pet_path(@pet), notice: 'No picture to print, Please upload a Picture.'
+      redirect_to pet_path(@pet), notice: 'No picture to print,
+                                          Please upload a Picture.'
     end
   end
 
   private
 
   def set_defaults
-    @pet_type = ['Dog', 'Cat', 'Bird', 'Guinea Pig', 'Hamster', 'Iguana', 'Snake', 'Other']
+    @pet_type = ['Dog', 'Cat', 'Bird', 'Guinea Pig',
+                 'Hamster', 'Iguana', 'Snake', 'Other']
 
     @size = %w(Small Medium Big)
 
@@ -108,6 +105,17 @@ class PetsController < ApplicationController
   end
 
   def social_message
-    "#{(@pet.found ? 'Found my pet' : 'Please help find my pet')} #{@pet.name}, it's a #{@pet.color} #{@pet.pet_type}, #{@pet.breed}, #{@pet.gender}, age #{@pet.age}. #FindMyPet".slice(0...140)
+    "#{(@pet.found ? 'Found my pet' : 'Please help find my pet')}
+    #{@pet.name}, it's a #{@pet.color} #{@pet.pet_type}, #{@pet.breed},
+    #{@pet.gender}, age #{@pet.age}. #FindMyPet".slice(0...140)
+  end
+
+  def config_twitter
+    Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
+      config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
+      config.access_token        = current_user.oauth_token
+      config.access_token_secret = current_user.oauth_secret
+    end
   end
 end
