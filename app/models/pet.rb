@@ -12,7 +12,5 @@ class Pet < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :sightings, dependent: :destroy
 
-
   mount_uploaders :image, ImageUploader
-
 end

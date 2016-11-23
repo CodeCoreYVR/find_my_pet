@@ -7,9 +7,9 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  validates :email, presence: true, uniqueness: {case_sensitive: false},
-            format: VALID_EMAIL_REGEX,
-            unless: :from_oauth?
+  validates :email, presence: true, uniqueness: { case_sensitive: false },
+                    format: VALID_EMAIL_REGEX,
+                    unless: :from_oauth?
 
   has_many :pets, dependent: :destroy
 
@@ -32,7 +32,7 @@ class User < ApplicationRecord
   private
 
   def downcase_email
-    self.email.downcase! if email.present?
+    email.downcase! if email.present?
   end
 
   def from_oauth?
@@ -40,7 +40,9 @@ class User < ApplicationRecord
   end
 
   def self.find_from_oauth(oauth_data)
-    User.where("email = ? OR (provider = ? AND uid = ?)", oauth_data['info']['email'], oauth_data['provider'], oauth_data['uid']).first
+    User.where('email = ? OR (provider = ? AND uid = ?)',
+               oauth_data['info']['email'],
+               oauth_data['provider'], oauth_data['uid']).first
   end
 
   def self.create_from_oauth(oauth_data)
