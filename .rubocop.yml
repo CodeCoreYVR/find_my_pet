@@ -1,0 +1,25 @@
+AllCops:
+  TargetRubyVersion: 2.3
+
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'lib/**/*'
+    - 'bin/*'
+    - 'Gemfile'
+    - 'Gemfile.lock'
+    - 'Rakefile'
+
+Documentation: # Disabling documentation cop
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/AbcSize:
+  Max: 25
