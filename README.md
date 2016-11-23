@@ -14,7 +14,7 @@ of reuniting missing pets with their owners.
 - bundle
 
 ## Keys required: ##
-
+```
 ENV["email_user_name"] = "..."
 ENV["email_password"]  = "..."
 ENV['TWITTER_CONSUMER_KEY'] = "..."
@@ -25,7 +25,7 @@ ENV['FACEBOOK_APP_SECRET'] = "..."
 
 ENV['aws_access_key_id'] = "..."
 ENV['aws_access_secret'] = "..."
-
+```
 ### List Of Contributors: ###
 
 *TBA*
