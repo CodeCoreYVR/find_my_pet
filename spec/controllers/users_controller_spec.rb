@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   describe "#index" do
-    context 'with user signed in' do
-      let(:user) {create(:user)}
+    let(:user) {create(:user)}
 
+    context 'with user signed in' do
       it 'renders the index template' do
         session[:user_id] = user.id
         get :index
