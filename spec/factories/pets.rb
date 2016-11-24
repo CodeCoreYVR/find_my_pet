@@ -1,4 +1,7 @@
 FactoryGirl.define do
+
+
+
   factory :pet do
     association :user, factory: :user
     pet_type "MyString"

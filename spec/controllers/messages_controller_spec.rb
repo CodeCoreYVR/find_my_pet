@@ -1,14 +1,43 @@
 require 'rails_helper'
 
 RSpec.describe MessagesController, type: :controller do
+  include FactoryGirl::Syntax::Methods
 
 
   describe "#create" do
+    before do
+      @request.env['HTTP_REFERER'] = 'http://localhost:3000'
+    end
+
     it "creates a successful message" do
-      @post = Post.create(message: "Message")
-      @post.should be_an_instance_of Post
+      @pet=create(:pet)
+
+      before_count=Message.count
+      post(:create, params: {
+          message: FactoryGirl.attributes_for(:message),
+          # /ideas/:idea_id/comments
+          pet_id: @pet.id,
+
+      }
+      )
+
+      # create(:message)
+      after_count=Message.count
+
+      expect(before_count+1).to(eq(after_count))
+
     end
   end
+
+  # describe "#create" do
+  #   it "delete a message" do
+  #     create(:message)
+  #     before_count=Message.count
+  #     after_count=Message.count
+  #     expect(before_count+1).to(eq(after_count))
+  #
+  #   end
+  # end
 
 
 end
