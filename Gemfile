@@ -46,6 +46,7 @@ gem 'simple_form'
 gem 'faker'
 gem 'interactive_editor'
 gem 'awesome_print'
+gem 'friendly_id', '~> 5.1.0'
 
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
