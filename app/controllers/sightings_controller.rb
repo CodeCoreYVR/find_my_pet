@@ -25,7 +25,7 @@ class SightingsController < ApplicationController
       if @sighting.pet_id.present?
       SightingsMailer.notify_pet_owner(@sighting).deliver_now
       end
-      redirect_to pets_path, notice: 'Thanks for your colaboration! Pet owners will be notified. Have You seen any of those pets?'
+      redirect_to sightings_path, notice: 'Thanks for your collaboration! Pet owners will be notified.'
     else
       render :new
     end
@@ -39,7 +39,7 @@ class SightingsController < ApplicationController
 
   def update
     if @sighting.update sighting_params
-     redirect_to sighting_path(@sighting)
+      redirect_to sighting_path(@sighting)
     else
       render :edit
     end
