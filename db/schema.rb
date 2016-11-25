@@ -15,6 +15,18 @@ ActiveRecord::Schema.define(version: 20161125164027) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text     "body"
     t.integer  "pet_id"
@@ -42,6 +54,8 @@ ActiveRecord::Schema.define(version: 20161125164027) do
     t.time     "last_seen_time"
     t.string   "image",          default: [],                 array: true
     t.boolean  "found",          default: false
+    t.string   "slug"
+    t.index ["slug"], name: "index_pets_on_slug", using: :btree
     t.index ["user_id"], name: "index_pets_on_user_id", using: :btree
   end
 
@@ -57,11 +71,13 @@ ActiveRecord::Schema.define(version: 20161125164027) do
     t.datetime "updated_at",     null: false
     t.float    "lat"
     t.float    "long"
+    t.string   "slug"
     t.date     "last_seen_date"
     t.time     "last_seen_time"
     t.string   "color"
     t.string   "size"
     t.index ["pet_id"], name: "index_sightings_on_pet_id", using: :btree
+    t.index ["slug"], name: "index_sightings_on_slug", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

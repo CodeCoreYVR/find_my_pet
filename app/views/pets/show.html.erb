@@ -81,7 +81,7 @@
                     <p><%= @pet.note %></p>
                     <div>
                         <p>
-                            <%# if user_signed_in? && can?(:manage, @pet) %>
+                            <% if user_signed_in? && can?(:manage, @pet) %>
                                 <p>Found Your pet?</p>
                                 <%= simple_form_for @pet do |f| %>
                                     <% check_state = @pet.found ? 'checked' : 'unchecked' %>
@@ -92,7 +92,7 @@
                                         <%= f.input :share_on_facebook, as: :boolean, :input_html => { :checked => 'unchecked' } %>
                                     <% end %>
                                     <%= f.submit 'Confirm' %>
-                                <%# end %>
+                                <% end %>
                             <% end %>
                         </p>
 
@@ -127,7 +127,7 @@
       <div class="hr"></div>
 
 
-    
+
 
     </div>
 
