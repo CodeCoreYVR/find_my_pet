@@ -12,17 +12,14 @@ class UsersController < ApplicationController
     else
       flash.now[:alert] = 'Please make sure all fields are filled in'
       render :new
-
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def index
-    @user = current_user
+    if user_signed_in?
+      @user = current_user
+    else
+      redirect_to new_user_path
+    end
   end
 end
