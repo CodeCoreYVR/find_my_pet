@@ -11,8 +11,8 @@
         <div class="pet-other" style="display: none;">
           <%=f.input :pet_type, placeholder: 'Please type the specie of your pet', label: 'Species', input_html: { id: 'dingdong' } %>
         </div>
-         <%= f.input :color%>
-         <%= f.input :size, collection: @size%>
+         <%= f.input :color %>
+         <%= f.input :size, collection: @size %>
          <%= f.hidden_field :pet_id %>
          <br>
          <%=f.input :note %>
