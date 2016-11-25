@@ -8,6 +8,7 @@ class Sighting < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   friendly_id :slug_candidates, use: [:slugged, :history]
+  
   def slug_candidates
     [:pet_type, :last_seen_at]
   end
