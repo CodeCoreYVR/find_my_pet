@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120215648) do
+ActiveRecord::Schema.define(version: 20161125164027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,16 +48,19 @@ ActiveRecord::Schema.define(version: 20161120215648) do
   create_table "sightings", force: :cascade do |t|
     t.string   "pet_type"
     t.string   "last_seen_at"
-    t.datetime "date_time"
     t.text     "note"
     t.string   "image"
     t.string   "name"
     t.string   "contact"
     t.integer  "pet_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.float    "lat"
     t.float    "long"
+    t.date     "last_seen_date"
+    t.time     "last_seen_time"
+    t.string   "color"
+    t.string   "size"
     t.index ["pet_id"], name: "index_sightings_on_pet_id", using: :btree
   end
 
