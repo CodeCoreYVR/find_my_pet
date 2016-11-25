@@ -31,12 +31,13 @@ end
  pet = Pet.find(Random.rand(1..Pet.count))
  Sighting.create(name: Faker::Name.name,
            last_seen_at: Faker::Address.city,
+           last_seen_date: Faker::Date.forward(30),
+           last_seen_time: Faker::Time.backward(30, :all),
            pet_type: pet.pet_type,
            note: Faker::Lorem.paragraph,
            lat: rand(49.1...49.3),
            long: rand(-123.2...-122.0),
-           pet_id: pet.id,
-           date_time: Faker::Time.between(2.days.ago, Date.today, :all)
+           pet_id: pet.id
            )
 end
 

@@ -11,23 +11,28 @@
         <div class="pet-other" style="display: none;">
           <%=f.input :pet_type, placeholder: 'Please type the specie of your pet', label: 'Species', input_html: { id: 'dingdong' } %>
         </div>
+         <%= f.input :color%>
+         <%= f.input :size, collection: @size%>
          <%= f.hidden_field :pet_id %>
          <br>
          <%=f.input :note %>
-         <p><strong>Last Seen At (Please select on the map): </strong><p>
-         <%=f.hidden_field :last_seen_at %>
        <div class="form-inline">
-         <%=f.input :date_time, as: :date, order: [:day, :month, :year], label: 'Date' %>
+         <%=f.input :last_seen_date, as: :date, order: [:day, :month, :year], label: 'Date' %>
+       </div><br>
+       <div class="form-inline">
+         <%=f.input :last_seen_time, as: :time, label: 'Time' %>
        </div><br>
        <%= f.file_field :image %><br>
        <h2>Your Contact Info (Optional)</h2>
           <%= f.input :name %>
           <%= f.input :contact %>
-       <%= f.submit btn_label %>
-      <% end %>
+          <%= f.submit btn_label %>
       </div>
       <div class="col-md-6 map">
       <div style='width: 500px;'>
+        <p><strong>Last Seen At (Please select on the map): </strong><p>
+          <%=f.hidden_field :last_seen_at %>
+          <% end %>
         <input id="pac-input" class="controls" type="text" placeholder="Search Box">
         <div id="map" style='width: 500px; height: 700px;'></div>
       </div>
