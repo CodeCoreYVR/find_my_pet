@@ -33,22 +33,23 @@ class PetsController < ApplicationController
 
   def update
     if @pet.update pet_params
-      if @pet.tweet_this
-        @pet.tweet_this = false
-        client = Twitter::REST::Client.new do |config|
-          config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
-          config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
-          config.access_token        = current_user.oauth_token
-          config.access_token_secret = current_user.oauth_secret
-        end
-        client.update(social_message)
-        flash[:notice] = 'Tweet sent'
-      elsif @pet.share_on_facebook
-        @pet.share_on_facebook = false
-        @graph = Koala::Facebook::API.new(current_user.oauth_token)
-        @graph.put_connections("me", "feed", message: social_message)
-        flash[:notice] = 'Posted on Facebook'
-      end
+      # if @pet.tweet_this
+      #   @pet.tweet_this = false
+      #   client = Twitter::REST::Client.new do |config|
+      #     config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
+      #     config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
+      #     config.access_token        = current_user.oauth_token
+      #     config.access_token_secret = current_user.oauth_secret
+      #   end
+      #   client.update(social_message)
+      #   flash[:notice] = 'Tweet sent'
+      # elsif @pet.share_on_facebook
+      #   @pet.share_on_facebook = false
+      #   @graph = Koala::Facebook::API.new(current_user.oauth_token)
+      #   @graph.put_connections("me", "feed", message: social_message)
+      #   flash[:notice] = 'Posted on Facebook'
+      # end
+      # byebug
       redirect_to pet_path(@pet)
     else
       render :edit
