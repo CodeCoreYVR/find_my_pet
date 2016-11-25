@@ -28,7 +28,7 @@ gender = ['Male', 'Female']
 end
 
 2000.times do |i|
- pet = Pet.find(Random.rand(1..Pet.count))
+ pet = Pet.friendly.find(Random.rand(1..Pet.count))
  Sighting.create(name: Faker::Name.name,
            last_seen_at: Faker::Address.city,
            last_seen_date: Faker::Date.forward(30),
