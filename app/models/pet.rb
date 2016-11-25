@@ -12,7 +12,15 @@ class Pet < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :sightings, dependent: :destroy
 
-
   mount_uploaders :image, ImageUploader
 
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged, :history]
+  def slug_candidates
+    [
+      :name,
+      [:name, :breed],
+      [:name, :breed, :color]
+    ]
+  end
 end

@@ -27,11 +27,11 @@ class PetsController < ApplicationController
     @pets = Pet.order(created_at: :desc)
   end
 
-
   def edit
   end
 
   def update
+    @pet.slug = nil
     if @pet.update pet_params
       if @pet.tweet_this
         @pet.tweet_this = false
@@ -46,7 +46,7 @@ class PetsController < ApplicationController
       elsif @pet.share_on_facebook
         @pet.share_on_facebook = false
         @graph = Koala::Facebook::API.new(current_user.oauth_token)
-        @graph.put_connections("me", "feed", message: social_message)
+        @graph.put_connections('me', 'feed', message: social_message)
         flash[:notice] = 'Posted on Facebook'
       end
       redirect_to pet_path(@pet)
@@ -61,24 +61,22 @@ class PetsController < ApplicationController
   end
 
   def print
-    @pet = Pet.find params[:pet_id]
+    @pet = Pet.friendly.find params[:pet_id]
     if @pet.image.present?
-      render layout: "print"
+      render layout: 'print'
     else
-      redirect_to pet_path(@pet), notice: "No picture to print, Please upload a Picture."
+      redirect_to pet_path(@pet), notice: 'No picture to print, Please upload a Picture.'
     end
   end
 
   private
 
   def set_defaults
-
     @pet_type = ['Dog', 'Cat', 'Bird', 'Guinea Pig', 'Hamster', 'Iguana', 'Snake', 'Other']
 
-    @size = ['Small', 'Medium', 'Big']
+    @size = %w(Small Medium Big)
 
-    @gender = ['Male', 'Female']
-
+    @gender = %w(Male Female)
   end
 
   def pet_params
@@ -96,20 +94,18 @@ class PetsController < ApplicationController
                                  :tweet_this,
                                  :share_on_facebook,
                                  :note,
-                                 {image: []},
+                                 { image: [] },
                                  :last_seen_date,
                                  :last_seen_time,
                                  :user_id])
   end
 
   def find_pet
-    @pet = Pet.find params[:id]
+    @pet = Pet.friendly.find params[:id]
   end
 
   def authorize_access
-    unless can?(:manage, @pet)
-      redirect_to home_path, alert: 'access denied'
-    end
+    redirect_to home_path, alert: 'access denied' unless can?(:manage, @pet)
   end
 
   def social_message

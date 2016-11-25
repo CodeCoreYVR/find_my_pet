@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'rubocop', '~> 0.45.0', require: false
 
 gem 'gmaps4rails'
 gem 'underscore'
@@ -45,6 +46,7 @@ gem 'simple_form'
 gem 'faker'
 gem 'interactive_editor'
 gem 'awesome_print'
+gem 'friendly_id', '~> 5.1.0'
 
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -59,13 +61,12 @@ gem 'font-awesome-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-
+  gem 'rspec-rails'
   gem 'pry'
   gem 'pry-rails'
   gem 'rspec'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
   gem 'rails-controller-testing'
+  gem 'factory_girl_rails'
 end
 
 group :development do
@@ -77,6 +78,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'hirb'
   gem 'letter_opener'
+  gem 'rails-erd'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
