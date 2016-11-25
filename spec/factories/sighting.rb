@@ -1,7 +1,10 @@
 FactoryGirl.define do
  factory :sighting do
    last_seen_at { Faker::Address.city }
-   date_time { Faker::Date.forward(30) }
+   last_seen_time { Faker::Time.between(DateTime.now - 1, DateTime.now) }
+   last_seen_date { Faker::Date.forward(30) }
+   color { Faker::Color.color_name }
+   size { Faker::Color.color_name }
    note { Faker::Lorem.paragraph }
    lat { rand(49.1...49.3) }
    long { rand(-123.2...-122.0) }
