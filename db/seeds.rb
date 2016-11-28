@@ -36,7 +36,7 @@ end
            lat: rand(49.1...49.3),
            long: rand(-123.2...-122.0),
            pet_id: pet.id,
-           date_time: Faker::Time.between(2.days.ago, Date.today, :all)
+           last_seen_time: Faker::Time.between(2.days.ago, Date.today, :all)
            )
 end
 
