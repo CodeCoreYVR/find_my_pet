@@ -9,7 +9,7 @@ class SightingsController < ApplicationController
   def new
     if params[:pet_id].present?
       # render plain: " find pet_id"
-      @pet = Pet.find params[:pet_id]
+      @pet = Pet.friendly.find params[:pet_id]
       @sighting = Sighting.new
       @sighting.pet_type = @pet.pet_type
       @sighting.pet_id = params[:pet_id]
@@ -37,6 +37,7 @@ class SightingsController < ApplicationController
   end
 
   def update
+    @sighting.slug = nil
     if @sighting.update sighting_params
       redirect_to sighting_path(@sighting)
     else
@@ -60,10 +61,22 @@ class SightingsController < ApplicationController
   end
 
   def find_sighting
-    @sighting = Sighting.find params[:id]
+    @sighting = Sighting.friendly.find params[:id]
   end
 
   def sighting_params
-    params.require(:sighting).permit([:pet_type, :last_seen_at, :date_time, :long, :lat, :note, :image, :name, :contact, :pet_id])
+    params.require(:sighting).permit([:pet_type,
+                                      :last_seen_at,
+                                      :last_seen_time,
+                                      :last_seen_date,
+                                      :color,
+                                      :size, 
+                                      :long,
+                                      :lat,
+                                      :note,
+                                      :image,
+                                      :name,
+                                      :contact,
+                                      :pet_id])
   end
 end
