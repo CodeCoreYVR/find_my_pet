@@ -26,8 +26,8 @@ class SightingsController < ApplicationController
       end
       redirect_to(
         pets_path,
-        notice: 'Thanks for your colaboration! Pet owners will be notified.
-                 Have You seen any of those pets?'
+        notice: 'Thanks for your colaboration! Pet owners will be notified.'\
+        ' Have You seen any of those pets?'
       )
     else
       render :new
