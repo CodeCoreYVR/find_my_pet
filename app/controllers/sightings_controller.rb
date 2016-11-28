@@ -61,7 +61,7 @@ class SightingsController < ApplicationController
   end
 
   def find_sighting
-    @sighting = Sighting.friendly.find params[:id]
+    @sighting = Sighting.find params[:id]
   end
 
   def sighting_params
@@ -70,7 +70,7 @@ class SightingsController < ApplicationController
                                       :last_seen_time,
                                       :last_seen_date,
                                       :color,
-                                      :size, 
+                                      :size,
                                       :long,
                                       :lat,
                                       :note,
