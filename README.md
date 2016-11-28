@@ -26,6 +26,9 @@ ENV['FACEBOOK_APP_SECRET'] = "..."
 ENV['aws_access_key_id'] = "..."
 ENV['aws_access_secret'] = "..."
 ```
+
+View the live version of the application here: [Find My Pet](https://findmypetapp2.herokuapp.com/)
+
 ### List Of Contributors: ###
 
 *TBA*
