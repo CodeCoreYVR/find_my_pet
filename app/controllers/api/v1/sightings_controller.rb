@@ -1,4 +1,4 @@
-class Api < V1 < SightingsController < ApplicationController
+class Api::V1::SightingsController < ApplicationController
   protect_from_forgery with: :null_session
 
   def index

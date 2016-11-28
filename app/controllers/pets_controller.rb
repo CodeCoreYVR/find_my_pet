@@ -59,8 +59,10 @@ class PetsController < ApplicationController
     if @pet.image.present?
       render layout: 'print'
     else
-      redirect_to pet_path(@pet), notice: 'No picture to print,
-                                          Please upload a Picture.'
+      redirect_to(
+        pet_path(@pet),
+        notice: 'No picture to print, Please upload a Picture.'
+      )
     end
   end
 
@@ -105,9 +107,9 @@ class PetsController < ApplicationController
   end
 
   def social_message
-    "#{(@pet.found ? 'Found my pet' : 'Please help find my pet')}
-    #{@pet.name}, it's a #{@pet.color} #{@pet.pet_type}, #{@pet.breed},
-    #{@pet.gender}, age #{@pet.age}. #FindMyPet".slice(0...140)
+    "#{(@pet.found ? 'Found my pet' : 'Please help find my pet')}"\
+    " #{@pet.name}, it's a #{@pet.color} #{@pet.pet_type}, #{@pet.breed},"\
+    " #{@pet.gender}, age #{@pet.age}. #FindMyPet".slice(0...140)
   end
 
   def config_twitter
