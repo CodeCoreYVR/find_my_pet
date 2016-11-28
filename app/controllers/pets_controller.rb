@@ -78,24 +78,13 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit([:pet_type,
-                                 :breed,
-                                 :size,
-                                 :name,
-                                 :gender,
-                                 :color,
-                                 :age,
-                                 :last_seen_at,
-                                 :lat,
-                                 :long,
-                                 :found,
-                                 :tweet_this,
-                                 :share_on_facebook,
-                                 :note,
-                                 { image: [] },
-                                 :last_seen_date,
-                                 :last_seen_time,
-                                 :user_id])
+    params.require(:pet).permit(
+      [
+        :pet_type, :breed, :size, :name, :gender, :color, :age, :last_seen_at,
+        :lat, :long, :found, :tweet_this, :share_on_facebook, :note,
+        { image: [] }, :last_seen_date, :last_seen_time, :user_id
+      ]
+    )
   end
 
   def find_pet
