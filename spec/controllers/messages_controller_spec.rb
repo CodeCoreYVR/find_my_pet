@@ -29,6 +29,30 @@ RSpec.describe MessagesController, type: :controller do
     end
   end
 
+  describe "#destroy" do
+    before do
+      @request.env['HTTP_REFERER'] = 'http://localhost:3000'
+      @message=create(:message)
+
+    end
+
+    it "delete a successful message" do
+      @pet=create(:pet)
+
+      before_count=Message.count #1
+
+      delete :destroy, { id: @message.id }
+
+      after_count=Message.count #0
+      byebug
+
+      expect(before_count-1).to(eq(after_count))
+
+    end
+  end
+
+
+
   # describe "#create" do
   #   it "delete a message" do
   #     create(:message)
