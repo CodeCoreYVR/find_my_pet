@@ -31,6 +31,7 @@ class PetsController < ApplicationController
   end
 
   def update
+    @pet.slug = nil
     if @pet.update pet_params
       if @pet.tweet_this
         @pet.tweet_this = false
@@ -55,7 +56,7 @@ class PetsController < ApplicationController
   end
 
   def print
-    @pet = Pet.find params[:pet_id]
+    @pet = Pet.friendly.find params[:pet_id]
     if @pet.image.present?
       render layout: 'print'
     else
@@ -88,7 +89,7 @@ class PetsController < ApplicationController
   end
 
   def find_pet
-    @pet = Pet.find params[:id]
+    @pet = Pet.friendly.find params[:id]
   end
 
   def authorize_access
