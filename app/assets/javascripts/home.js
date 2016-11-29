@@ -8,7 +8,6 @@ $(document).ready(function(){
    $.ajax({
      url:`api/v1/pets`,
      success: function(pets){
-       console.log(pets[0])
        renderPets(pets);
      },
      error: function(){
