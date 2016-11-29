@@ -48,7 +48,8 @@ RSpec.describe SightingsController, type: :controller do
 
     context 'with invalid params' do
       it 'renders the new template with errors' do
-        post :create, params: { sighting: attributes_for(:sighting, pet_type: nil)
+        post :create, params: {
+          sighting: attributes_for(:sighting, pet_type: nil)
         }
         expect(response).to render_template(:new)
       end
