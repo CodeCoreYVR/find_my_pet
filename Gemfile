@@ -61,6 +61,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry'
   gem 'pry-rails'
+  gem 'rails-controller-testing'
   gem 'factory_girl_rails'
   gem 'rubocop', '~> 0.45.0'
 end

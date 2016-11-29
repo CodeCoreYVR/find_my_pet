@@ -4,3 +4,6 @@ ENV["email_user_name"] = "PUT USER NAME HERE"
 ENV["email_password"]  = "PUT PASSWORD HERE"
 ENV['FACEBOOK_APP_ID'] = '...'
 ENV['FACEBOOK_APP_SECRET'] = '...'
+
+ENV['aws_access_key_id'] = '...'
+ENV['aws_access_secret'] = '...'
