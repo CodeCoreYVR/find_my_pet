@@ -24,7 +24,11 @@ class SightingsController < ApplicationController
       if @sighting.pet_id.present?
         SightingsMailer.notify_pet_owner(@sighting).deliver_now
       end
-      redirect_to pets_path, notice: 'Thanks for your colaboration! Pet owners will be notified. Have You seen any of those pets?'
+      redirect_to(
+        pets_path,
+        notice: 'Thanks for your colaboration! Pet owners will be notified.'\
+        ' Have You seen any of those pets?'
+      )
     else
       render :new
     end
@@ -53,7 +57,8 @@ class SightingsController < ApplicationController
   private
 
   def set_defaults
-    @pet_type = ['Dog', 'Cat', 'Bird', 'Guinea Pig', 'Hamster', 'Iguana', 'Snake', 'Other']
+    @pet_type = ['Dog', 'Cat', 'Bird', 'Guinea Pig',
+                 'Hamster', 'Iguana', 'Snake', 'Other']
 
     @size = %w(Small Medium Big)
 
@@ -70,7 +75,7 @@ class SightingsController < ApplicationController
                                       :last_seen_time,
                                       :last_seen_date,
                                       :color,
-                                      :size, 
+                                      :size,
                                       :long,
                                       :lat,
                                       :note,
