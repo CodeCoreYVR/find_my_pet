@@ -27,8 +27,6 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'rubocop', '~> 0.45.0', require: false
-
 gem 'gmaps4rails'
 gem 'underscore'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
@@ -65,6 +63,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-rails'
   gem 'factory_girl_rails'
+  gem 'rubocop', '~> 0.45.0'
 end
 
 group :development do
