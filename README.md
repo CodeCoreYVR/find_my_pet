@@ -1,24 +1,39 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Find My Pet
 
-Things you may want to cover:
+## Project Description
 
-* Ruby version
+Find my Pet is a web application which enables pet owners
+to report missing pets, and the public to report missing pet sightings,
+with the intention of reuniting missing pets with their owners.
 
-* System dependencies
+## Setup Instructions
 
-* Configuration
+```
+rails db:create db:migrate db:seed
 
-* Database creation
+bundle
 
-* Database initialization
+rails s
+```
 
-* How to run the test suite
+## Keys required
+```
+ENV["email_user_name"] = "..."
+ENV["email_password"]  = "..."
+ENV['TWITTER_CONSUMER_KEY'] = "..."
+ENV['TWITTER_CONSUMER_SECRET'] = "..."
 
-* Services (job queues, cache servers, search engines, etc.)
+ENV['FACEBOOK_APP_ID'] = "..."
+ENV['FACEBOOK_APP_SECRET'] = "..."
 
-* Deployment instructions
+ENV['aws_access_key_id'] = "..."
+ENV['aws_access_secret'] = "..."
+```
 
-* ...
+View the live version of the application here: [Find My Pet](https://findmypetapp2.herokuapp.com/)
+
+### List Of Contributors
+
+*TBA*
