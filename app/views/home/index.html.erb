@@ -8,9 +8,7 @@
               <img src="/assets/panel-image-1.png" alt="" />
             </a>
           </div>
-
           <div class="col-md-5">
-
           <% if user_signed_in? %>
             <a href="<%= new_pet_path %>" class="panel lostpet">
           <% else %>
@@ -55,121 +53,8 @@
     <div class="panel panel-default list_panel main-painel">
       <h3 class="text-center" > Have you seen me ?</h3>
       <div id="recent-pet-list">
-
-      <!-- <div class="hr"></div> -->
-      <!-- <div class="main-list">
-        <div class="col-md-3 col-xs-6">
-          <img class='img-circle' src="/assets/tbn.jpg" alt="" />
-        </div>
-
-        <div class="col-md-9">
-          <div class="row">
-            <div class="col-md-3">
-              <div>Species</div>
-              <strong>Cat</strong>
-            </div>
-
-            <div class="col-md-3">
-              <div>Sex</div>
-              <strong>Female</strong>
-            </div>
-
-            <div class="col-md-6">
-              <div>Size</div>
-              <strong>Medium</strong>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div>last seen at:</div>
-              <div>1 hours ago near your location</div>
-            </div>
-            <div class="col-md-6 text-right">
-              <a href="#" class="btn btn-default btn-xs moreinfo-btn">More info</a>
-              <a href="sightings/new" class="btn btn-primary btn-xs"> <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> Report</a>
-            </div>
-          </div>
-        </div>
       </div>
-      <!Main list for pet 1 closes here -->
-
-      <!-- <div class="main-list">
-        <div class="col-md-3 col-xs-6">
-          <img class='img-circle' src="/assets/tbn.jpg" alt="" />
-        </div>
-
-        <div class="col-md-9">
-          <div class="row">
-            <div class="col-md-3">
-              <div>Species</div>
-              <strong>Cat</strong>
-            </div>
-
-            <div class="col-md-3">
-              <div>Sex</div>
-              <strong>Female</strong>
-            </div>
-
-            <div class="col-md-6">
-              <div>Size</div>
-              <strong>Medium</strong>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div>last seen at:</div>
-              <div>23 hours ago near your location</div>
-            </div>
-            <div class="col-md-6 text-right">
-              <a href="#" class="btn btn-default btn-xs">More info</a>
-              <a href="#" class="btn btn-primary btn-xs"> <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> Report</a>
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <!-- Main list for pet 2 closes here -->
-
-
-      <!-- <div class="main-list">
-        <div class="col-md-3 col-xs-6">
-          <img class='img-circle' src="/assets/tbn.jpg" alt="" />
-        </div>
-
-        <div class="col-md-9">
-          <div class="row">
-            <div class="col-md-3">
-              <div>Species</div>
-              <strong>Cat</strong>
-            </div>
-
-            <div class="col-md-3">
-              <div>Sex</div>
-              <strong>Female</strong>
-            </div>
-
-            <div class="col-md-6">
-              <div>Size</div>
-              <strong>Medium</strong>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div>last seen at:</div>
-              <div>2 hours ago near your location</div>
-            </div>
-            <div class="col-md-6 text-right">
-              <a href="#" class="btn btn-default btn-xs">More info</a>
-              <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> Report</a>
-            </div>
-          </div>
-
-        </div>
-      </div> -->
-      <!-- main list for pet 3 closes here -->
-
     </div>
-    </div>
-
   </div>
 
   <div class="col-md-6">
@@ -179,18 +64,14 @@
 </div>
 </div>
 
-
 <div class="parallax-window" data-parallax="scroll" data-image-src="/assets/home-banner2.jpg">
   <div class="container">
     <div class="banner2">
       <div class="col-md-6">
         <h3>We understand the trauma of losing a pet</h3>
         <p>We are here to help!  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. </p>
-
       </div>
     </div>
   </div>
-
 </div>
-
 <%= render 'shared/sign_in' %>
