@@ -17,9 +17,9 @@ RSpec.describe Sighting, type: :model do
     end
 
     it 'it has a date_time' do
-      s = build(:sighting, date_time: nil)
+      s = build(:sighting, last_seen_date: nil)
       s.valid?
-      expect(s.errors).to have_key(:date_time)
+      expect(s.errors).to have_key(:last_seen_date)
     end
 
   end
