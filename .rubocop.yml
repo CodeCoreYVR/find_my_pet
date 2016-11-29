@@ -23,3 +23,6 @@ Metrics/MethodLength:
 
 Metrics/AbcSize:
   Max: 25
+
+Style/ClassAndModuleChildren:
+  Enabled: false
