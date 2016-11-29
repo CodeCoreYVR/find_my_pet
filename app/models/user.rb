@@ -29,7 +29,7 @@ class User < ApplicationRecord
            oauth_raw_data: oauth_data
   end
 
-  private
+  private_class_method
 
   def downcase_email
     email.downcase! if email.present?
