@@ -1,10 +1,9 @@
 class MessagesMailer < ApplicationMailer
   def message_pet_owner(message)
-    @message   = message
+    return if @user&.email
+    @message = message
     @pet = message.pet
-    @user     = @pet.user
-    if @user && @user.email
-      mail(to: @user.email, subject: 'You got an sighting to your pet')
-    end
+    @user = @pet.user
+    mail(to: @user.email, subject: 'You got an sighting to your pet')
   end
 end

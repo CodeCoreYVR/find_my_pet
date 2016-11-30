@@ -3,9 +3,7 @@ class CallbacksController < ApplicationController
     data = request.env['omniauth.auth']
     user = User.find_from_oauth(data)
     user ||= User.create_from_oauth(data)
-    if user.provider != data['provider']
-      user.update_from_oauth(data)
-    end
+    user.update_from_oauth(data) if user.provider != data['provider']
     session[:user_id] = user.id
     redirect_to home_path
   end
@@ -14,9 +12,7 @@ class CallbacksController < ApplicationController
     data = request.env['omniauth.auth']
     user = User.find_from_oauth(data)
     user ||= User.create_from_oauth(data)
-    if user.provider != data['provider']
-      user.update_from_oauth(data)
-    end
+    user.update_from_oauth(data) if user.provider != data['provider']
     session[:user_id] = user.id
     redirect_to home_path
   end

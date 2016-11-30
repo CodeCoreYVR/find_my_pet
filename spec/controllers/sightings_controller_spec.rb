@@ -11,9 +11,9 @@ RSpec.describe SightingsController, type: :controller do
 
   describe '#new' do
     let(:pet) { create(:pet) }
-
     context 'with existing reported lost pet' do
       it 'renders new template' do
+
         get :new, params: {
           pet_id: pet.id,
           sightings: attributes_for(:sighting, pet_type: pet.pet_type)
@@ -25,7 +25,8 @@ RSpec.describe SightingsController, type: :controller do
     context 'without reported lost pet' do
       it 'renders new template' do
         get :new, params: {
-          sightings: attributes_for(:sighting) }
+          sightings: attributes_for(:sighting)
+        }
         expect(assigns(:sighting).pet_id).to eq(nil)
       end
     end
@@ -47,7 +48,9 @@ RSpec.describe SightingsController, type: :controller do
 
     context 'with invalid params' do
       it 'renders the new template with errors' do
-        post :create, params: { sighting: attributes_for(:sighting, pet_type: nil) }
+        post :create, params: {
+          sighting: attributes_for(:sighting, pet_type: nil)
+        }
         expect(response).to render_template(:new)
       end
     end
@@ -77,9 +80,12 @@ RSpec.describe SightingsController, type: :controller do
     context 'with valid params' do
       it 'redirects to sighting page' do
         patch :update, params: {
-          id: sighting.id, sighting: attributes_for(
-            :sighting, pet_type: sighting.pet_type, pet_id: sighting.pet_id
-            )
+          id: sighting.id,
+          sighting: attributes_for(
+            :sighting,
+            pet_type: sighting.pet_type,
+            pet_id: sighting.pet_id
+          )
         }
         expect(response).to redirect_to(sighting_path)
       end

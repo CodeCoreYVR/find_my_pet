@@ -27,26 +27,21 @@ class PetsController < ApplicationController
     @pets = Pet.order(created_at: :desc)
   end
 
-
   def edit
   end
 
   def update
+    @pet.slug = nil
     if @pet.update pet_params
       if @pet.tweet_this
         @pet.tweet_this = false
-        client = Twitter::REST::Client.new do |config|
-          config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
-          config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
-          config.access_token        = current_user.oauth_token
-          config.access_token_secret = current_user.oauth_secret
-        end
+        client = config_twitter
         client.update(social_message)
         flash[:notice] = 'Tweet sent'
       elsif @pet.share_on_facebook
         @pet.share_on_facebook = false
         @graph = Koala::Facebook::API.new(current_user.oauth_token)
-        @graph.put_connections("me", "feed", message: social_message)
+        @graph.put_connections('me', 'feed', message: social_message)
         flash[:notice] = 'Posted on Facebook'
       end
       redirect_to pet_path(@pet)
@@ -61,58 +56,58 @@ class PetsController < ApplicationController
   end
 
   def print
-    @pet = Pet.find params[:pet_id]
+    @pet = Pet.friendly.find params[:pet_id]
     if @pet.image.present?
-      render layout: "print"
+      render layout: 'print'
     else
-      redirect_to pet_path(@pet), notice: "No picture to print, Please upload a Picture."
+      redirect_to(
+        pet_path(@pet),
+        notice: 'No picture to print, Please upload a Picture.'
+      )
     end
   end
 
   private
 
   def set_defaults
+    @pet_type = ['Dog', 'Cat', 'Bird', 'Guinea Pig',
+                 'Hamster', 'Iguana', 'Snake', 'Other']
 
-    @pet_type = ['Dog', 'Cat', 'Bird', 'Guinea Pig', 'Hamster', 'Iguana', 'Snake', 'Other']
+    @size = %w(Small Medium Big)
 
-    @size = ['Small', 'Medium', 'Big']
-
-    @gender = ['Male', 'Female']
-
+    @gender = %w(Male Female)
   end
 
   def pet_params
-    params.require(:pet).permit([:pet_type,
-                                 :breed,
-                                 :size,
-                                 :name,
-                                 :gender,
-                                 :color,
-                                 :age,
-                                 :last_seen_at,
-                                 :lat,
-                                 :long,
-                                 :found,
-                                 :tweet_this,
-                                 :share_on_facebook,
-                                 :note,
-                                 {image: []},
-                                 :last_seen_date,
-                                 :last_seen_time,
-                                 :user_id])
+    params.require(:pet).permit(
+      [
+        :pet_type, :breed, :size, :name, :gender, :color, :age, :last_seen_at,
+        :lat, :long, :found, :tweet_this, :share_on_facebook, :note,
+        { image: [] }, :last_seen_date, :last_seen_time, :user_id
+      ]
+    )
   end
 
   def find_pet
-    @pet = Pet.find params[:id]
+    @pet = Pet.friendly.find params[:id]
   end
 
   def authorize_access
-    unless can?(:manage, @pet)
-      redirect_to home_path, alert: 'access denied'
-    end
+    redirect_to home_path, alert: 'access denied' unless can?(:manage, @pet)
   end
 
   def social_message
-    "#{(@pet.found ? 'Found my pet' : 'Please help find my pet')} #{@pet.name}, it's a #{@pet.color} #{@pet.pet_type}, #{@pet.breed}, #{@pet.gender}, age #{@pet.age}. #FindMyPet".slice(0...140)
+    "#{(@pet.found ? 'Found my pet' : 'Please help find my pet')}"\
+    " #{@pet.name}, it's a #{@pet.color} #{@pet.pet_type}, #{@pet.breed},"\
+    " #{@pet.gender}, age #{@pet.age}. #FindMyPet".slice(0...140)
+  end
+
+  def config_twitter
+    Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
+      config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
+      config.access_token        = current_user.oauth_token
+      config.access_token_secret = current_user.oauth_secret
+    end
   end
 end
