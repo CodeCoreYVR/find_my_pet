@@ -15,7 +15,7 @@ RSpec.describe UsersController, type: :controller do
     context 'with no user signed in' do
       it 'redirects to the new user page' do
         get :index
-        expect(response).to redirect_to(new_user_path)
+        expect(response).to redirect_to(new_session_path)
       end
     end
   end
