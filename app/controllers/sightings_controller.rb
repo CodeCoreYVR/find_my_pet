@@ -8,7 +8,6 @@ class SightingsController < ApplicationController
 
   def new
     if params[:pet_id].present?
-      # render plain: " find pet_id"
       @pet = Pet.friendly.find params[:pet_id]
       @sighting = Sighting.new
       @sighting.pet_type = @pet.pet_type
@@ -29,7 +28,6 @@ class SightingsController < ApplicationController
         notice: 'Thanks for your colaboration! Pet owners will be notified.'\
         ' Have You seen any of those pets?'
       )
-
     else
       render :new
     end

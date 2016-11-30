@@ -37,7 +37,7 @@ RSpec.describe Sighting, type: :model do
     it 'has a size' do
       s = build(:sighting, size: nil)
       s.valid?
-      expect(s.errors).to have_key(:size)  
+      expect(s.errors).to have_key(:size)
     end
 
   end
