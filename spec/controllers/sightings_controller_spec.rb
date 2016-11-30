@@ -42,7 +42,7 @@ RSpec.describe SightingsController, type: :controller do
             :sighting, pet_type: pet.pet_type, pet_id: pet.id
             )
           }
-        expect(response).to redirect_to(sightings_path)
+        expect(response).to redirect_to(pets_path)
       end
     end
 
