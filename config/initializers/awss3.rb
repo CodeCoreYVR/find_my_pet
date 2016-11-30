@@ -6,5 +6,5 @@ CarrierWave.configure do |config|
     aws_secret_access_key: ENV['aws_access_secret'],
     region:                'us-west-2'
   }
-  config.fog_directory  = 'codecore15t2groupproject'
+  config.fog_directory = 'codecore15t2groupproject'
 end

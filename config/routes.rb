@@ -15,24 +15,21 @@ Rails.application.routes.draw do
 
   resources :sightings
 
-
   get '/auth/facebook', as: :sign_in_with_facebook
   get '/auth/facebook/callback/' => 'callbacks#facebook'
 
   get '/auth/twitter', as: :sign_in_with_twitter
   get '/auth/twitter/callback/' => 'callbacks#twitter'
 
-
-  namespace :api, defaults: {format: :json} do
+  namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :pets, only:[:index, :show, :new]
+      resources :pets, only: [:index, :show, :new]
     end
   end
 
-  namespace :api, defaults: {format: :json} do
+  namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :sightings, only:[:index, :show, :create, :new]
+      resources :sightings, only: [:index, :show, :create, :new]
     end
   end
-
 end

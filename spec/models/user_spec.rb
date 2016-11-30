@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   describe 'validations' do
-
     it 'has a first name' do
       u = build(:user, first_name: nil)
       u.valid?
@@ -34,17 +32,13 @@ RSpec.describe User, type: :model do
       s.valid?
       expect(s.errors).to have_key(:email)
     end
-
   end
 
   describe 'associations' do
-
     it 'has many pets' do
       u = create(:user)
       x = u.pets.create
       expect(x.user_id).to eq(u.id)
     end
-
   end
-
 end
