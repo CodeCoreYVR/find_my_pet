@@ -3,11 +3,10 @@ require 'rails_helper'
 RSpec.describe Api::V1::SightingsController, type: :controller do
   render_views
 
-  let (:pet) { FactoryGirl.create(:pet) }
+  let(:pet) { create(:pet) }
 
   describe '#index' do
     it 'responds with 200 code' do
-      byebug
       get :index, format: :json, id: pet.id
       expect(response).to be_success
     end
