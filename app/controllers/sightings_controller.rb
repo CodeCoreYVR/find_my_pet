@@ -7,11 +7,11 @@ class SightingsController < ApplicationController
   end
 
   def new
-    if params[:slug].present?
-      @pet = Pet.friendly.find params[:slug]
+    if params[:pet_id].present?
+      @pet = Pet.friendly.find params[:pet_id]
       @sighting = Sighting.new
       @sighting.pet_type = @pet.pet_type
-      @sighting.pet_id = params[:pet_id]
+      @sighting.pet_id = @pet.id
     else
       @sighting = Sighting.new
     end
