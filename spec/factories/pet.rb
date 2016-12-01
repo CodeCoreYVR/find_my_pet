@@ -1,5 +1,6 @@
 FactoryGirl.define do
  factory :pet do
+   association :user
    name { Faker::Name.name }
    breed { Faker::Name.first_name }
    color { Faker::Color.color_name }
