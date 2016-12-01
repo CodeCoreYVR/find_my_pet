@@ -9,16 +9,22 @@
           <%=f.input :pet_type, collection: @pet_type, label: 'Species' %>
         </div>
         <div class="pet-other" style="display: none;">
-          <%=f.input :pet_type, placeholder: 'Please type the specie of your pet', label: 'Species', input_html: { id: 'dingdong' } %>
+          <%=f.input :pet_type, placeholder: 'Please type the species of this pet', label: 'Species', input_html: { id: 'dingdong' } %>
         </div>
          <%= f.hidden_field :pet_id %>
          <br>
          <%=f.input :note %>
          <p><strong>Last Seen At (Please select on the map): </strong><p>
          <%=f.hidden_field :last_seen_at %>
+        <div class="location">
+         <%=f.input :long %>
+         <%=f.input :lat %>
+        </div>
        <div class="form-inline">
          <%=f.input :date_time, as: :date, order: [:day, :month, :year], label: 'Date' %>
        </div><br>
+       <div id="img-thumb">
+       </div>
        <%= f.file_field :image %><br>
        <h2>Your Contact Info (Optional)</h2>
           <%= f.input :name %>
