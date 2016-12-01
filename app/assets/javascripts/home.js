@@ -1,26 +1,27 @@
-
-$(document).ready(function(){
- var petList = $("#recent-pet-list");
- getPets();
+$(document).ready(function() {
+  var petList = $("#recent-pet-list");
+  if((petList).html()) {
+    getPets();
+  }
  });
 
- function getPets(){
+ function getPets() {
    $.ajax({
      url:`api/v1/pets`,
-     success: function(pets){
+     success: function(pets) {
        renderPets(pets);
      },
-     error: function(){
-       alert('Could not get pet');
+     error: function() {
+       console.error('Could not get pet');
      }
    })
  }
 
-function renderPets(pets){
+function renderPets(pets) {
   var petTemplate = $('#recent-pet-list').html();
   var petList = $('#recent-pet-list');
 
-  var petsHTML = pets.slice(0,5).map(function(pet){
+  var petsHTML = pets.slice(0,5).map(function(pet) {
     return PetListItem(pet);
   }).join("");
 
