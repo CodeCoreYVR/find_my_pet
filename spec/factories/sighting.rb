@@ -8,10 +8,10 @@ FactoryGirl.define do
    note { Faker::Lorem.paragraph }
    lat { rand(49.1...49.3) }
    long { rand(-123.2...-122.0) }
-   pet_type { Faker::Color.color_name }
+   pet_type { pet&.pet_type || Faker::Color.color_name}
    image { Faker::Color.color_name}
    name { Faker::Color.color_name }
-   pet_id {1}
+   pet_id {pet&.id }
    contact { Faker::Color.color_name }
  end
 end
