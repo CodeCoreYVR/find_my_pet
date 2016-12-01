@@ -2,7 +2,7 @@
 machine:
   ruby:
     version:
-      '2.3'
+      '2.3.0'
 
 dependencies:
   pre:
@@ -11,5 +11,4 @@ dependencies:
 ## Customize test commands
 test:
   post:
-    - bundle exec rspec
     - bundle exec rubocop
