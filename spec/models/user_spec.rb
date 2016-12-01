@@ -27,7 +27,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'has a unique email' do
-      u = create(:user, email: 'goat@goat.goat')
+      create(:user, email: 'goat@goat.goat')
       s = build(:user, email: 'goat@goat.goat')
       s.valid?
       expect(s.errors).to have_key(:email)
