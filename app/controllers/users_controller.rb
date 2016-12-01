@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user, only: [:index]
   def new
     @user = User.new
   end
@@ -16,17 +17,9 @@ class UsersController < ApplicationController
     else
       flash.now[:alert] = 'Please make sure all fields are filled in'
       render :new
-
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def index
-    @user = current_user
   end
 end

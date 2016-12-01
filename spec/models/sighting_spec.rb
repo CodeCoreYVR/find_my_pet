@@ -16,10 +16,28 @@ RSpec.describe Sighting, type: :model do
       expect(s.errors).to have_key(:last_seen_at)
     end
 
-    it 'it has a date_time' do
-      s = build(:sighting, date_time: nil)
+    it 'has a last_seen_date' do
+      s = build(:sighting, last_seen_date: nil)
       s.valid?
-      expect(s.errors).to have_key(:date_time)
+      expect(s.errors).to have_key(:last_seen_date)
+    end
+
+    it 'has a last_seen_time' do
+      s = build(:sighting, last_seen_time: nil)
+      s.valid?
+      expect(s.errors).to have_key(:last_seen_time)
+    end
+
+    it 'has a color' do
+      s = build(:sighting, color: nil)
+      s.valid?
+      expect(s.errors).to have_key(:color)
+    end
+
+    it 'has a size' do
+      s = build(:sighting, size: nil)
+      s.valid?
+      expect(s.errors).to have_key(:size)
     end
 
   end
@@ -27,9 +45,9 @@ RSpec.describe Sighting, type: :model do
   describe 'associations' do
 
     it 'belongs_to pet' do
-      x = create(:pet)
-      s = x.sightings.create
-      expect(s.pet_id).to eq(x.id)
+      pet = create(:pet)
+      spotted = pet.sightings.create
+      expect(spotted.pet_id).to eq(pet.id)
     end
 
   end
