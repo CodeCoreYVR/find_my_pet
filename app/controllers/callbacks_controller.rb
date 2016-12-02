@@ -7,7 +7,7 @@ class CallbacksController < ApplicationController
     omniauth_redirect
   end
 
-private
+  private
 
   def omniauth_redirect
     data = request.env['omniauth.auth']
