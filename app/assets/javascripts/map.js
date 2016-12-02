@@ -1,18 +1,5 @@
 /* global google $ */
 
-const info =
-`<div id = content>
-  <div id = 'photo' style='float: left'>
-    <img src='https://www.dogstrust.org.uk/sponsor/_dogs/digby-assets/v800_digby01.jpg' alt='dog' height='160' width='120'>
-  </div>
-  <div id='pet-info' style='float: right; padding: 1em;'>
-    <h2>Dog Name</h2>
-    <h5>Type</h5>
-    <p>lost on: 1990-01-01<p>
-    <p></p>
-  </div>
-</div>`
-
 var mapstyle = [
               {'featureType': 'administrative',
               'elementType': 'labels.text.fill',
