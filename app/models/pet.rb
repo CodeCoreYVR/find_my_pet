@@ -3,7 +3,7 @@ class Pet < ApplicationRecord
   attr_accessor :share_on_facebook
 
   reverse_geocoded_by :lat, :long
-  before_validation :reverse_geocode
+  after_validation :reverse_geocode
   belongs_to :user
 
   validates :pet_type, presence: true
