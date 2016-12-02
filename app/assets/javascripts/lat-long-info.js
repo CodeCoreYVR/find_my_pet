@@ -10,50 +10,43 @@ $(function () {
 
       var fr = new FileReader()
       fr.addEventListener('load', function () {
-        window.imageFile = fr.result
+        var thumbnailContainer = document.getElementById('img-thumb')
+        var thumbnail = document.createElement('img')
+        thumbnail.src = fr.result
 
-        var img = document.createElement('img')
-        img.src = fr.result
+        thumbnailContainer.appendChild(thumbnail)
 
-        document.body.appendChild(img)
-        document.body.appendChild(img)
-        $('[name*=type]').val('99.32132149496')
-        getExif(img)
+        getExif(thumbnail, function (longitude, latitude) {
+          $('[name*=lat]').val(latitude)
+          $('[name*=long]').val(longitude)
+        })
       })
       fr.readAsDataURL(imageFile)
     })
   }
 })
 
-function getExif (img) {
-  EXIF.getData(img, function () {
-    var longitude = EXIF.getTag(this, 'GPSLongitude')
-    var latitude = EXIF.getTag(this, 'GPSLatitude')
-    var latAndLong = document.getElementById('latAndLong')
-    latAndLong.innerHTML = `${latitude},  ${longitude}`
-  })
-
-  EXIF.getData(img, function () {
-    var allMetaData = EXIF.getTag(this, 'GPSLongitude')
-    allMetaData = EXIF.getTag(this, 'GPSLatitude')
-    var allMetaDataSpan = document.getElementById('allMetaDataSpan')
-    allMetaDataSpan.innerHTML = JSON.stringify(allMetaData, null, '\t')
-  })
+function getExif (img, cb) {
+  // if cb is not a function, log an error
+  if (typeof (cb) === 'function') {
+    EXIF.getData(img, function () {
+      var longitude = EXIF.getTag(this, 'GPSLongitude')
+      var latitude = EXIF.getTag(this, 'GPSLatitude')
+      // var latAndLong = document.getElementById('latAndLong')
+      // latAndLong.innerHTML = `${latitude},  ${longitude}`
+      var decLat = degToDec(latitude)
+      var decLong = degToDec(longitude)
+      cb(decLat, decLong)
+    })
+  } else {
+    window.alert('there is no function')
+  }
 }
 
-// A few things. The $(document).ready function is making the map not load on the
-// sightings page?! (sightings/show). Now it works.
-// Ref:http://www.jstips.co/en/detect-document-ready-in-pure-js/
+// Turns the 'degrees, minutes, seconds' value from the EXIF data into a float.
 
-// make hidden fields in the _form? populated with location data.
-// Auto place pin on the map?
-
-// Instead of inserting the img tag into the document body of the current page,
-// I want to add it to the All Sightings page. Maybe thats not my job?
-
-// Are all the images going to have the same id with this code?!
-// That can't work...
-
-// Also, I want to load a thumbnail image of the pic next to the upload button
-// where the  file name is... perhaps the best way of doing this is with a gem that
-//  generates thumbnails. Which means do later.
+function degToDec (dmsValue) {
+  dmsValue[1] = (dmsValue[2] / 60) + dmsValue[1]
+  var decDeg = (dmsValue[1] / 60) + dmsValue[0]
+  return decDeg
+}

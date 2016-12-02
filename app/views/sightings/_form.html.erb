@@ -16,7 +16,6 @@
          <%= f.hidden_field :pet_id %>
          <br>
          <%=f.input :note %>
-         <p><strong>Last Seen At (Please select on the map): </strong><p>
          <%=f.hidden_field :last_seen_at %>
         <div class="location">
          <%=f.input :long %>
@@ -28,9 +27,11 @@
        <div class="form-inline">
          <%=f.input :last_seen_time, as: :time, label: 'Time' %>
        </div><br>
-       <div id="img-thumb">
+       <div id='img-thumb'>
        </div>
+       <div>
        <%= f.file_field :image %><br>
+       </div>
        <h2>Your Contact Info (Optional)</h2>
           <%= f.input :name %>
           <%= f.input :contact %>
@@ -38,11 +39,11 @@
       </div>
       <div class="col-md-6 map">
       <div style='width: 500px;'>
-        <p><strong>Last Seen At (Please select on the map): </strong><p>
+        <p style='padding: 5px'><strong>Last Seen At (Please select on the map): </strong><p>
           <%=f.hidden_field :last_seen_at %>
           <% end %>
         <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-        <div id="map" style='width: 500px; height: 700px;'></div>
+        <div id="map" style='width: 500px; height: 900px;'></div>
       </div>
     </div>
   </div>
