@@ -19,7 +19,6 @@ class SightingsController < ApplicationController
 
   def create
     @sighting = Sighting.new sighting_params
-    byebug
     if @sighting.save
       if @sighting.pet_id.present?
         SightingsMailer.notify_pet_owner(@sighting).deliver_now
