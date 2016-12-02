@@ -27,10 +27,10 @@
        <div class="form-inline">
          <%=f.input :last_seen_time, as: :time, label: 'Time' %>
        </div><br>
-       <div id='img-thumb'>
-       </div>
        <div>
        <%= f.file_field :image %><br>
+       </div>
+       <div id='img-thumb'>
        </div>
        <h2>Your Contact Info (Optional)</h2>
           <%= f.input :name %>

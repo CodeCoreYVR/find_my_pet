@@ -1,11 +1,11 @@
-/* global FileReader EXIF $ */
+/* global google $ */
 
 const info =
 `<div id = content>
-  <div id = "photo" style="float: left">
-    <img src="https://www.dogstrust.org.uk/sponsor/_dogs/digby-assets/v800_digby01.jpg" alt="dog" height="160" width="120">
+  <div id = 'photo' style='float: left'>
+    <img src='https://www.dogstrust.org.uk/sponsor/_dogs/digby-assets/v800_digby01.jpg' alt='dog' height='160' width='120'>
   </div>
-  <div id="pet-info" style="float: right; padding: 1em;">
+  <div id='pet-info' style='float: right; padding: 1em;'>
     <h2>Dog Name</h2>
     <h5>Type</h5>
     <p>lost on: 1990-01-01<p>
@@ -14,16 +14,87 @@ const info =
 </div>`
 
 var mapstyle = [
-{"featureType": "administrative", "elementType": "labels.text.fill", "stylers": [{"color": "#444444"}]}, {"featureType": "administrative.country","elementType":"labels.text.fill","stylers":[{"hue":"#ff0000"}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#ff0000"}]},{"featureType":"administrative.land_parcel","elementType":"labels.text.fill","stylers":[{"color":"#ff0000"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"hue":"#ff0000"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"weight":"0.90"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ababab"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"weight":"0.30"},{"visibility":"off"},{"hue":"#ff0000"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"color":"#ff0000"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"#ff0000"},{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#838383"},{"visibility":"on"}]}
+              {'featureType': 'administrative',
+              'elementType': 'labels.text.fill',
+              'stylers': [{'color': '#444444'}]},
+
+              {'featureType': 'administrative.country',
+              'elementType': 'labels.text.fill',
+              'stylers': [{'hue': '#ff0000'}]},
+
+              {'featureType': 'administrative.locality',
+              'elementType': 'labels.text.fill',
+              'stylers': [{'color': '#ff0000'}]},
+
+              {'featureType': 'administrative.land_parcel',
+              'elementType': 'labels.text.fill',
+              'stylers': [{'color': '#ff0000'}]},
+
+              {'featureType': 'landscape',
+              'elementType': 'all',
+              'stylers': [{'color': '#f2f2f2'}]},
+
+              {'featureType': 'poi',
+              'elementType': 'all',
+              'stylers': [{'visibility': 'off'}]},
+
+              {'featureType': 'road',
+              'elementType': 'all',
+              'stylers': [{'saturation': -100},
+              {'lightness': 45}]},
+
+              {'featureType': 'road',
+              'elementType': 'labels.text.fill',
+              'stylers': [{'hue': '#ff0000'}]},
+
+              {'featureType': 'road.highway',
+              'elementType': 'all',
+              'stylers': [{'visibility': 'simplified'}]},
+
+              {'featureType': 'road.arterial',
+              'elementType': 'geometry',
+              'stylers': [{'weight': '0.90'}]},
+
+              {'featureType': 'road.arterial',
+              'elementType': 'geometry.fill',
+              'stylers': [{'visibility': 'on'},
+              {'color': '#ababab'}]},
+
+              {'featureType': 'road.arterial',
+              'elementType': 'geometry.stroke',
+              'stylers': [{'weight': '0.30'},
+              {'visibility': 'off'},
+              {'hue': '#ff0000'}]},
+
+              {'featureType': 'road.arterial',
+              'elementType': 'labels.text.fill',
+              'stylers': [{'color': '#ff0000'}]},
+
+              {'featureType': 'road.arterial',
+              'elementType': 'labels.icon',
+              'stylers': [{'visibility': 'off'}]},
+
+              {'featureType': 'road.local',
+              'elementType': 'geometry.fill',
+              'stylers': [{'color': '#ff0000'},
+              {'visibility': 'off'}]},
+
+              {'featureType': 'transit',
+              'elementType': 'all',
+              'stylers': [{'visibility': 'off'}]},
+              {'featureType': 'water',
+              'elementType': 'all',
+              'stylers': [{'color': '#838383'},
+              {'visibility': 'on'}]}
 ];
 
-$( document ).ready(function() {
-  var styledMap = new google.maps.StyledMapType(mapstyle, {name: "styled map"});
+$(document).ready(function () {
+  var styledMap = new google.maps.StyledMapType(mapstyle, {name: 'styled map'});
   var map; // define the global map
 
   map = initMap();
-  map.mapTypes.set("map_style", styledMap);
-  map.setMapTypeId("map_style");
+  map.mapTypes.set('map_style', styledMap);
+  map.setMapTypeId('map_style');
   window.globals = {};
 
   globals.heatmap = new google.maps.visualization.HeatmapLayer({
@@ -34,15 +105,15 @@ $( document ).ready(function() {
 
 });
 
-function initMap() {
+function initMap () {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 49.28200018372185, lng: -123.10863018035889},
     zoom: 14,
     mapTypeId: 'roadmap',
-    streetViewControl: false,
+    streetViewControl: false
   });
 
-  google.maps.event.addListener(map, 'click', function(event) {
+  google.maps.event.addListener(map, 'click', function (event) {
     closeAllInfoWindows();
     addMarker(event.latLng, map);
     $('#pet_last_seen_at').val(event.latLng)
@@ -52,7 +123,7 @@ function initMap() {
   // ##### TO BE ADDED TO 'PET DIVS' TO GET SIGHTINGS FOR HEATMAP ###########
   // google.maps.event.addDomListener(getSightings, 'click', function() {
   // globals.heatmap.setMap(null);
-  // getSightingsOfaPet('-THE-PET-ID-', globals.heatmap);
+  // getSightingsOfaPet( '-THE-PET-ID-', globals.heatmap);
   //});
 
 
@@ -87,10 +158,10 @@ function initMap() {
   }
 
 
-  searchBox.addListener('places_changed', function() {
+  searchBox.addListener('places_changed', function () {
          var places = searchBox.getPlaces();
 
-         if (places.length == 0) {
+         if (places.length === 0) {
            return;
          }
 
@@ -102,9 +173,9 @@ function initMap() {
 
          // For each place, get the icon, name and location.
          var bounds = new google.maps.LatLngBounds();
-         places.forEach(function(place) {
+         places.forEach(function (place) {
            if (!place.geometry) {
-             console.log("Returned place contains no geometry");
+             console.log('Returned place contains no geometry');
              return;
            }
            var icon = {
@@ -137,7 +208,7 @@ function initMap() {
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
+          navigator.geolocation.getCurrentPosition(function (position) {
             var pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
@@ -150,7 +221,8 @@ function initMap() {
                 // addMarker(pos, map);
               } else {
                 var slugArr = /(\d+)$/.exec(document.URL);
-                var myPet = window.globals.allpets.filter(function(data){ return data.id == slugArr[0] });
+                var myPet = window.globals.allpets.filter(function
+                  (data) { return data.id === slugArr[0] });
 
                 var pos = {lat: myPet[0].lat, lng: myPet[0].lng}
                 map.setCenter(pos);
@@ -214,7 +286,7 @@ var icons = {
   });
 }
 
-function addMarker(location, map, label) {
+function addMarker (location, map, label) {
   var marker = new google.maps.Marker({
     position: location,
     label: label,
@@ -229,7 +301,7 @@ function addMarker(location, map, label) {
 }
 
 // Add a marker on lost pet
-function addLostPetsMarker(location, map) {
+function addLostPetsMarker (location, map) {
   var marker = new google.maps.Marker({
     position: location,
     // label: label,
@@ -244,7 +316,7 @@ function addSightingsMarker (data, map) {
   if ($('#show-map').html()){
 
     var heatmapData = [];
-    for (var i=0; i < data.length; i++){
+    for (var i=0; i < data.length; i++) {
       heatmapData.push({
                   location: new google.maps.LatLng(data[i].lat, data[i].lng),
                   weight: 20
@@ -259,7 +331,7 @@ function addSightingsMarker (data, map) {
     for (var i=0; i < data.length; i++){
     console.log('here');
       var marker = new google.maps.Marker({
-      position: {lat:data[i].lat, lng:data[i].lng},
+      position: {lat: data[i].lat, lng: data[i].lng},
       map: map,
       icon: 'assets/icon_report_found_green_active.png'
       });
@@ -270,27 +342,27 @@ function addSightingsMarker (data, map) {
 
 
 
-var removeLastMarker = function() {
+var removeLastMarker = function () {
   markers[markers.length - 2].setMap(null)
 }
 
-var closeAllInfoWindows = function() {
+var closeAllInfoWindows = function () {
   for (var i=0;i<infoWindows.length;i++) {
      infoWindows[i].close();
   }
 }
 
-var getLostPets = function(){
+var getLostPets = function () {
   // Get all the lost pets and draw markers on the map
-  $.get('/api/v1/pets', (data) => {
+  $.get( '/api/v1/pets', (data) => {
     window.globals.allpets = data;
     // console.log(globals.pets);
-    if (!$('#show-map').html() && !$('#sightings-map').html()){
+    if (!$( '#show-map').html() && !$( '#sightings-map').html()){
       for (var i=0; i < data.length; i++){
         addLostPetsMarker({lat:data[i].lat, lng: data[i].lng}, map, data[i].name);
       }
     }
-    if ($('#sightings-map').html()){
+    if ($( '#sightings-map').html()){
       console.log(window.globals.allpets);
       for(var i = 0; i<window.globals.allpets.length; i++) {
         getSightingsOfaPet(window.globals.allpets[i].id);
@@ -302,7 +374,7 @@ var getLostPets = function(){
 // get all the pet close to user( currently not supported by current api controller)
 var getCloseLostPets = function(){
   // Get all the lost pets and draw markers on the map
-  $.get('/api/v1/pets',
+  $.get( '/api/v1/pets',
     {user_lat: globals.location.lat, user_lng: globals.location.lng},
     (data) => {
     window.globals.pets = data;
@@ -321,46 +393,44 @@ var getPetsInView = function(bounds){
   // var bounds = map.getBounds();
   var ne = bounds.getNorthEast();
   var sw = bounds.getSouthWest();
-  $.get('/api/v1/pets',
+  $.get( '/api/v1/pets',
     {top: ne.lat,
      bottom: sw.lat,
      left: sw.lng,
      right: ne.lng},
     (data) => {
     window.globals.pets = data;
-    for (var i=0; i < data.length; i++){
-
-      addLostPetsMarker({lat:data[i].lat, lng: data[i].lng}, map, data[i].name);
+    for (var i = 0; i < data.length; i++) {
+      addLostPetsMarker({lat: data[i].lat, lng: data[i].lng}, map, data[i].name);
     }
   });
 }
 
 // Get all the sightings by pet id
-var getSightingsOfaPet = function(pet_id){
+var getSightingsOfaPet = function (pet_id) {
   // Get all the lost pets and draw markers on the map
   $.ajax({
-    url: "/api/v1/sightings",
-    type: "get", //send it through get method
-    data:{id: pet_id},
-    success: function(data) {
+    url: '/api/v1/sightings',
+    type: 'get', // send it through get method
+    data: {id: pet_id},
+    success: function (data) {
       window.globals.sightings = data;``
       addSightingsMarker(data, map);
     },
     error: function(xhr) {
       alert('No data');
     }
-
   });
 }
 
 // Returns the pets with the category given
 // example:
 //  $('#filter_button').on('click', function(){
-//   var pets = getPetsByType(globals.pets, "Dog", map);
+//   var pets = getPetsByType(globals.pets, 'Dog', map);
 //  });
-function getPetsByType(pets_data, type, map) {
+function getPetsByType (pets_data, type, map) {
   var pets = pets_data;
   return pets.filter(
-      function(data){ return pets.pet_type == type }
+      function (data) { return pets.pet_type === type }
   );
 }
