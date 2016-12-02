@@ -37,7 +37,8 @@ end
            note: Faker::Lorem.paragraph,
            lat: rand(49.1...49.3),
            long: rand(-123.2...-122.0),
-           pet_id: pet.id
+           pet_id: pet.id,
+           last_seen_time: Faker::Time.between(2.days.ago, Date.today, :all)
            )
 end
 

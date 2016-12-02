@@ -7,5 +7,6 @@ class Sighting < ApplicationRecord
   validates :color, presence: true
   validates :last_seen_date, presence: true
   validates :last_seen_time, presence: true
+
   mount_uploader :image, ImageUploader
 end
