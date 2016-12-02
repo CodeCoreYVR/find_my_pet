@@ -29,12 +29,5 @@ RSpec.describe Api::V1::SightingsController, type: :controller do
       expect(JSON.parse(response.body).length).to eq(3)
     end
 
-    it 'does not return other pet\'s sightings' do
-      FactoryGirl.create :pet, id: 2
-      FactoryGirl.create_list(:sighting, 2, pet_id: 2)
-      FactoryGirl.create_list(:sighting, 3, pet_id: pet.id)
-      get :index, format: :json, id: pet.id
-      expect(JSON.parse(response.body).length).to eq(3)
-    end
   end
 end

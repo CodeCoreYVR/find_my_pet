@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 20161202180220) do
     t.string   "color"
     t.string   "size"
     t.string   "address"
-
     t.index ["pet_id"], name: "index_sightings_on_pet_id", using: :btree
     t.index ["slug"], name: "index_sightings_on_slug", using: :btree
   end
