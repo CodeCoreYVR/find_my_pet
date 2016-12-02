@@ -56,7 +56,6 @@ class SightingsController < ApplicationController
   private
 
   def set_defaults
-
     @pet_type = ['Dog', 'Cat', 'Bird', 'Guinea Pig',
                  'Hamster', 'Iguana', 'Snake', 'Other']
 
@@ -70,7 +69,6 @@ class SightingsController < ApplicationController
   end
 
   def sighting_params
-
     params.require(:sighting).permit([:pet_type,
                                       :last_seen_at,
                                       :last_seen_time,
