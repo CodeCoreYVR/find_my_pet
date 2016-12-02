@@ -1,53 +1,53 @@
-<!-- <h1 class="text-center">Lost Your pet? Don't worry we will help you to find it!</h1> -->
 <div class="row">
     <div class="col-md-4">
     <%= simple_form_for  @pet  do |f| %>
-
         <div class="pet-selected">
           <%=f.input :pet_type, collection: @pet_type, label: 'Species' %>
         </div>
         <div class="pet-other" style="display: none;">
-          <%=f.input :pet_type, placeholder: 'Please type the specie of your pet', label: 'Species', input_html: { id: 'dingdong' } %>
+          <%=f.input :pet_type, placeholder: 'Please type the species of your pet',
+                                label: 'Species',
+                                input_html: { id: 'dingdong' } %>
         </div>
-        <%=f.input :breed, placeholder: "If You don't know just type 'Other'" %>
+        <%=f.input :breed, placeholder: "Not sure? Type 'Other'" %>
         <%=f.input :color %>
         <%=f.input :size, collection: @size %>
         <%=f.input :name %>
         <%=f.input :gender, collection: @gender %>
         <%=f.input :age %>
         <%=f.hidden_field :last_seen_at %>
+
         <div class="form-inline">
           <%=f.input :last_seen_date, as: :date, order: [:day, :month, :year] %>
           <%=f.input :last_seen_time, as: :time, only: [:hour, :minute] %>
         </div>
-
     </div>
+
     <div class="col-md-8 ">
       <div>
         <%= f.file_field :image, multiple: :true %>
         <%= f.hidden_field :image_cache %>
       </div>
-      <%=f.input :note, placeholder: 'Use this place to leave some contact number or add any other information that help to find your pet.' %>
+      <%=f.input :note, placeholder: 'Add information to help find your pet.' %>
+      <p>
+        <strong><i class="fa fa-location-arrow" aria-hidden="true">
+          </i> Please select on the map the last place where you seen your pet.
+        </strong>
+      </p>
+      <div style='width: 100%;'>
+        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+      </div>  
+        <div id="map" style='width: 100%; height: 400px;'></div>
+    </div>
 
-
-  <p><strong><i class="fa fa-location-arrow" aria-hidden="true"></i> Please select on the map the last place where you seen your pet.</strong></p>
-  <div style='width: 100%;'>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map" style='width: 100%; height: 400px;'></div>
-  </div>
-
-  <div class="col-md-6 col-md-offset-3 ">
-    </br>
-    <%= f.submit btn_label, :class=> 'bnt btn-primary btn-block'%>
+    <div class="col-md-6 col-md-offset-3 ">
       </br>
+      <%= f.submit btn_label, :class=> 'bnt btn-primary btn-block'%>
         </br>
           </br>
-
-  </div>
-
-
-  <%end%>
-
-  </div>
+            </br>
+    </div>
+    <%end%>
+</div>
 
 </div>

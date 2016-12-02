@@ -1,54 +1,54 @@
 
 <div class="row form-sighting ">
-    <div class="col-md-6">
-      <div class="form-title">
+  <div class="col-md-6">
+    <div class="form-title">
       <h1>Have You Seen a Lost Pet?</h1>
       </div>
-      <%= simple_form_for @sighting do |f| %>
-        <div class="pet-selected">
-          <%=f.input :pet_type, collection: @pet_type, label: 'Species' %>
-        </div>
-        <div class="pet-other" style="display: none;">
-          <%=f.input :pet_type, placeholder:
-          'Please type the species of this pet', label: 'Species', input_html:
-          { id: 'dingdong' } %>
-        </div>
-         <%= f.input :color %>
-         <%= f.input :size, collection: @size %>
-         <%= f.hidden_field :pet_id %>
-         <br>
-         <%=f.input :note %>
-         <%=f.hidden_field :last_seen_at %>
-        <div class="location">
-         <%=f.input :long %>
-         <%=f.input :lat %>
-        </div>
-       <div class="form-inline">
-         <%=f.input :last_seen_date, as: :date, order: [:day, :month, :year],
-         label: 'Date' %>
-       </div><br>
-       <div class="form-inline">
-         <%=f.input :last_seen_time, as: :time, label: 'Time' %>
-       </div><br>
-       <div>
-       <%= f.file_field :image %><br>
-       </div>
-       <div id='img-thumb'>
-       </div>
-       <h2>Your Contact Info (Optional)</h2>
-          <%= f.input :name %>
-          <%= f.input :contact %>
-          <%= f.submit btn_label %>
+        <%= simple_form_for @sighting do |f| %>
+      <div class="pet-selected">
+        <%=f.input :pet_type, collection: @pet_type, label: 'Species' %>
+      </div>
+      <div class="pet-other" style="display: none;">
+        <%=f.input :pet_type, placeholder:
+        'Please type the species of this pet', label: 'Species', input_html:
+        { id: 'dingdong' } %>
+      </div>
+        <%= f.input :color %>
+        <%= f.input :size, collection: @size %>
+        <%= f.hidden_field :pet_id %>
+      <br>
+        <%=f.input :note %>
+        <%=f.hidden_field :last_seen_at %>
+      <div class="location">
+        <%=f.hidden_field :lat %>
+        <%=f.hidden_field :long %>
+      </div>
+      <div class="form-inline">
+      <%=f.input :last_seen_date, as: :date, order: [:day, :month, :year],
+        label: 'Date' %>
+      </div><br>
+      <div class="form-inline">
+        <%=f.input :last_seen_time, as: :time, label: 'Time' %>
+      </div><br>
+      <div>
+        <%= f.file_field :image %><br>
+      </div>
+        <div id='img-thumb'>
+      </div>
+        <h2>Your Contact Info (Optional)</h2>
+        <%= f.input :name %>
+        <%= f.input :contact %>
+        <%= f.submit btn_label %>
       </div>
       <div class="col-md-6 map">
-      <div style='width: 500px;'>
+        <div style='width: 500px;'>
         <p style='padding: 5px'><strong>Last Seen At (Please select on the map):
-          </strong>
+        </strong>
         <p>
-          <%=f.hidden_field :last_seen_at %>
-          <% end %>
+        <%=f.hidden_field :last_seen_at %>
+        <% end %>
         <input id="pac-input" class="controls" type="text"
-          placeholder="Search Box">
+        placeholder="Search Box">
         <div id="map" style='width: 500px; height: 900px;'></div>
       </div>
     </div>
