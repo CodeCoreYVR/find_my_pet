@@ -21,7 +21,7 @@ class SightingsController < ApplicationController
     @sighting = Sighting.new sighting_params
     if @sighting.save
       if @sighting.pet_id.present?
-        SightingsMailer.notify_pet_owner(@sighting).deliver_now
+        SightingsMailer.notify_pet_owner(@sighting).deliver_later
       end
       redirect_to(
         pets_path,
