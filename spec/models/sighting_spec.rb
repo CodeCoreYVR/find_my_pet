@@ -10,12 +10,6 @@ RSpec.describe Sighting, type: :model do
       expect(s.errors).to have_key(:pet_type)
     end
 
-    it 'has a last_seen_at' do
-      s = build(:sighting, last_seen_at: nil)
-      s.valid?
-      expect(s.errors).to have_key(:last_seen_at)
-    end
-
     it 'has a last_seen_date' do
       s = build(:sighting, last_seen_date: nil)
       s.valid?

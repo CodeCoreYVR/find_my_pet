@@ -19,6 +19,7 @@ class SightingsController < ApplicationController
 
   def create
     @sighting = Sighting.new sighting_params
+    byebug
     if @sighting.save
       if @sighting.pet_id.present?
         SightingsMailer.notify_pet_owner(@sighting).deliver_now
@@ -70,7 +71,6 @@ class SightingsController < ApplicationController
 
   def sighting_params
     params.require(:sighting).permit([:pet_type,
-                                      :last_seen_at,
                                       :last_seen_time,
                                       :last_seen_date,
                                       :color,

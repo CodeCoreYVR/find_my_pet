@@ -17,7 +17,7 @@ gender = ['Male', 'Female']
            color: Faker::Color.color_name,
            gender: gender.sample,
            age:  (1+Random.rand(10)),
-           last_seen_at: Faker::Address.city,
+           address: Faker::Address.city,
            last_seen_date: Faker::Date.forward(30),
            last_seen_time: Faker::Time.backward(30, :all),
            note: Faker::Lorem.paragraph,
@@ -30,7 +30,7 @@ end
 100.times do |i|
  pet = Pet.friendly.find(Random.rand(1..Pet.count))
  Sighting.create(name: Faker::Name.name,
-           last_seen_at: Faker::Address.city,
+           address: Faker::Address.city,
            last_seen_date: Faker::Date.forward(30),
            last_seen_time: Faker::Time.backward(30, :all),
            pet_type: pet.pet_type,

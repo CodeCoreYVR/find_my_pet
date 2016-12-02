@@ -27,11 +27,6 @@ RSpec.describe Pet, type: :model do
      p.valid?
      expect(p.errors).to have_key(:gender)
    end
-
-   it 'will have a last_seen_at' do
-     p = build(:pet, last_seen_at: nil)
-     p.valid?
-     expect(p.errors).to have_key(:last_seen_at)
-   end
+   
  end
 end
