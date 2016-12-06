@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Pet, type: :model do
-
   describe 'validations' do
-
     it 'will have a body' do
       m = Message.new
       m.valid?
