@@ -6,7 +6,7 @@ FactoryGirl.define do
     color { Faker::Color.color_name }
     gender { Faker::Color.color_name }
     age { (1 + Random.rand(10)) }
-    last_seen_at { Faker::Address.city }
+    address { Faker::Address.city }
     last_seen_date { Faker::Date.forward(30) }
     last_seen_time { Faker::Time.backward(30, :all) }
     note { Faker::Lorem.paragraph }

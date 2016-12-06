@@ -31,7 +31,8 @@
       <div class="col-md-6 map">
       <div style='width: 500px;'>
         <p><strong>Last Seen At (Please select on the map): </strong><p>
-          <%=f.hidden_field :last_seen_at %>
+          <%= f.hidden_field :lat, id: "lat" %>
+          <%= f.hidden_field :long, id: "lng" %>
           <% end %>
         <input id="pac-input" class="controls" type="text" placeholder="Search Box">
         <div id="map" style='width: 500px; height: 700px;'></div>

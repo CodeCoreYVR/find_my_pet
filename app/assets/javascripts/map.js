@@ -44,8 +44,6 @@ function initMap() {
   google.maps.event.addListener(map, 'click', function(event) {
     closeAllInfoWindows();
     addMarker(event.latLng, map);
-    $('#pet_last_seen_at').val(event.latLng)
-    $('#sighting_last_seen_at').val(event.latLng)
   });
 
   // ##### TO BE ADDED TO 'PET DIVS' TO GET SIGHTINGS FOR HEATMAP ###########
@@ -157,8 +155,10 @@ function initMap() {
               }
 
             // getCloseLostPets();
-            $('#pet_last_seen_at').val(`(${pos.lat}, ${pos.lng})`)
-            $('#sighting_last_seen_at').val(`(${pos.lat}, ${pos.lng})`)
+            $("#lat").val(`${pos.lat}`);
+            $("#lng").val(`${pos.lng}`);
+
+
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
@@ -338,11 +338,9 @@ var getPetsInView = function(bounds){
 var getSightingsOfaPet = function(pet_id){
   // Get all the lost pets and draw markers on the map
   $.ajax({
-    url: "/api/v1/sightings",
-    type: "get", //send it through get method
-    data:{id: pet_id},
+    url: "/api/v1/sightings", //send it through get method
     success: function(data) {
-      window.globals.sightings = data;``
+      window.globals.sightings = data;
       addSightingsMarker(data, map);
     },
     error: function(xhr) {
@@ -350,6 +348,10 @@ var getSightingsOfaPet = function(pet_id){
     }
 
   });
+}
+
+var getSightings = function () {
+
 }
 
 // Returns the pets with the category given
