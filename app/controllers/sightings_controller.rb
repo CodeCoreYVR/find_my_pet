@@ -70,7 +70,6 @@ class SightingsController < ApplicationController
 
   def sighting_params
     params.require(:sighting).permit([:pet_type,
-                                      :last_seen_at,
                                       :last_seen_time,
                                       :last_seen_date,
                                       :color,

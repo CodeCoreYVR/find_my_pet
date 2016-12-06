@@ -15,7 +15,8 @@
         <%=f.input :name %>
         <%=f.input :gender, collection: @gender %>
         <%=f.input :age %>
-        <%=f.hidden_field :last_seen_at %>
+        <%= f.hidden_field :lat, id: "lat" %>
+        <%= f.hidden_field :long, id: "lng" %>
         <div class="form-inline">
           <%=f.input :last_seen_date, as: :date, order: [:day, :month, :year] %>
           <%=f.input :last_seen_time, as: :time, only: [:hour, :minute] %>
