@@ -71,11 +71,11 @@ ActiveRecord::Schema.define(version: 20161125164027) do
     t.datetime "updated_at",     null: false
     t.float    "lat"
     t.float    "long"
+    t.string   "slug"
     t.date     "last_seen_date"
     t.time     "last_seen_time"
     t.string   "color"
     t.string   "size"
-    t.string   "slug"
     t.index ["pet_id"], name: "index_sightings_on_pet_id", using: :btree
     t.index ["slug"], name: "index_sightings_on_slug", using: :btree
   end
