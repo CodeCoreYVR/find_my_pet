@@ -115,6 +115,7 @@ GEM
     formatador (0.2.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
+    geocoder (1.4.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     gmaps4rails (2.1.2)
@@ -361,6 +362,7 @@ DEPENDENCIES
   font-awesome-rails
   font-awesome-sass
   friendly_id (~> 5.1.0)
+  geocoder
   gmaps4rails
   hirb
   interactive_editor

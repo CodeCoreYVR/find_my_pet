@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125164027) do
+ActiveRecord::Schema.define(version: 20161202180220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20161125164027) do
     t.string   "color"
     t.string   "gender"
     t.string   "age"
-    t.string   "last_seen_at"
     t.text     "note"
     t.integer  "user_id"
     t.datetime "created_at",                     null: false
@@ -55,13 +54,13 @@ ActiveRecord::Schema.define(version: 20161125164027) do
     t.string   "image",          default: [],                 array: true
     t.boolean  "found",          default: false
     t.string   "slug"
+    t.string   "address"
     t.index ["slug"], name: "index_pets_on_slug", using: :btree
     t.index ["user_id"], name: "index_pets_on_user_id", using: :btree
   end
 
   create_table "sightings", force: :cascade do |t|
     t.string   "pet_type"
-    t.string   "last_seen_at"
     t.text     "note"
     t.string   "image"
     t.string   "name"
@@ -76,6 +75,7 @@ ActiveRecord::Schema.define(version: 20161125164027) do
     t.time     "last_seen_time"
     t.string   "color"
     t.string   "size"
+    t.string   "address"
     t.index ["pet_id"], name: "index_sightings_on_pet_id", using: :btree
     t.index ["slug"], name: "index_sightings_on_slug", using: :btree
   end
