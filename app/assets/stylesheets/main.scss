@@ -126,3 +126,14 @@ table {
   @include box-shadow(1px, 1px, 5px, lighten($btn-default-color,40%)) ;
 
 }
+
+
+.sign-in {
+  padding-bottom: 25px;
+}
+
+.sign-in p:last-child {
+  margin-top: 25px;
+}
+
+

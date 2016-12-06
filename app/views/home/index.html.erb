@@ -2,7 +2,7 @@
     <div class="main-hero">
       <div class="container">
         <div class="row">
-          <div class="col-md-5 col-md-offset-1 ">
+          <div class="col-md-5 col-md-offset-1">
             <a href="#seeme" class="panel">
               <h2><strong>Spotted </strong>a Pet?</h2>
               <img src="/assets/panel-image-1.png" alt="" />
@@ -10,15 +10,14 @@
           </div>
 
           <div class="col-md-5">
-
-          <% if user_signed_in? %>
-            <a href="<%= new_pet_path %>" class="panel lostpet">
-          <% else %>
-            <a data-toggle="modal" data-target="#SignIn" class="panel lostpet">
-          <% end %>
-              <h2><strong>Lost </strong>a Pet?</h2>
-              <img src="/assets/panel-image-2.png" alt="" />
-            </a>
+              <% if user_signed_in? %>
+                <a href="<%= new_pet_path %>" class="panel lostpet">
+              <% else %>
+                <a data-toggle="modal" data-target="#SignIn" class="panel lostpet">
+              <% end %>
+                <h2><strong>Lost </strong>a Pet?</h2>
+                <%= image_tag image_path('panel-image-2.png') %>
+              </a>
           </div>
         </div>
       </div>
