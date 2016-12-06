@@ -26,16 +26,16 @@ RSpec.describe Pet, type: :model do
       expect(p.errors).to have_key(:gender)
     end
 
-   it 'will have a color' do
-     c = build(:pet, color: nil)
-     c.valid?
-     expect(c.errors).to have_key(:color)
-   end
+    it 'will have a color' do
+      c = build(:pet, color: nil)
+      c.valid?
+      expect(c.errors).to have_key(:color)
+    end
 
-   it 'will have a gender' do
-     p = build(:pet, gender: nil)
-     p.valid?
-     expect(p.errors).to have_key(:gender)
-   end
- end
+    it 'will have a gender' do
+      p = build(:pet, gender: nil)
+      p.valid?
+      expect(p.errors).to have_key(:gender)
+    end
+  end
 end

@@ -28,6 +28,5 @@ RSpec.describe Api::V1::SightingsController, type: :controller do
       get :index, format: :json, id: pet.id
       expect(JSON.parse(response.body).length).to eq(3)
     end
-
   end
 end
