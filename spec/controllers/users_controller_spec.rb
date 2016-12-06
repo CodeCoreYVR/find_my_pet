@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  describe "#index" do
-    let(:user) {create(:user)}
+  describe '#index' do
+    let(:user) { create(:user) }
 
     context 'with user signed in' do
       it 'renders the index template' do
@@ -20,14 +20,14 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe "#new" do
-    it "renders the new template" do
+  describe '#new' do
+    it 'renders the new template' do
       get :new
       expect(response).to render_template(:new)
     end
   end
 
-  describe "#create" do
+  describe '#create' do
     context 'with valid params' do
       it 'redirects to the home page' do
         post :create, params: { user: attributes_for(:user) }
@@ -37,7 +37,7 @@ RSpec.describe UsersController, type: :controller do
 
     context 'with invalid params' do
       it 'render the new template' do
-        post :create, params: { user: attributes_for(:user, first_name: nil)}
+        post :create, params: { user: attributes_for(:user, first_name: nil) }
         expect(response).to render_template(:new)
       end
     end
