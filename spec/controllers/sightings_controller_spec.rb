@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe SightingsController, type: :controller do
-
   describe '#index' do
     it 'renders index page' do
       get :index
@@ -13,7 +12,6 @@ RSpec.describe SightingsController, type: :controller do
     let(:pet) { create(:pet) }
     context 'with existing reported lost pet' do
       it 'renders new template' do
-
         get :new, params: {
           pet_id: pet.id,
           sightings: attributes_for(:sighting, pet_type: pet.pet_type)
@@ -40,8 +38,8 @@ RSpec.describe SightingsController, type: :controller do
         post :create, params: {
           sighting: attributes_for(
             :sighting, pet_type: pet.pet_type, pet_id: pet.id
-            )
-          }
+          )
+        }
         expect(response).to redirect_to(pets_path)
       end
     end
@@ -96,7 +94,7 @@ RSpec.describe SightingsController, type: :controller do
         patch :update, params: {
           id: sighting.id, sighting: attributes_for(
             :sighting, pet_type: nil, pet_id: sighting.pet_id
-            )
+          )
         }
         expect(response).to render_template(:edit)
       end
@@ -111,5 +109,4 @@ RSpec.describe SightingsController, type: :controller do
       expect(response).to redirect_to(sightings_path)
     end
   end
-
 end
