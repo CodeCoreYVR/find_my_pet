@@ -1,10 +1,9 @@
 class SightingsMailer < ApplicationMailer
   def notify_pet_owner(sighting)
-    @sighting   = sighting
+    return if @user&.email
+    @sighting = sighting
     @pet = sighting.pet
-    @user     = @pet.user
-    if @user && @user.email
-      mail(to: @user.email, subject: 'You got an sighting to your pet')
-    end
+    @user = @pet.user
+    mail(to: @user.email, subject: 'You got an sighting to your pet')
   end
 end
