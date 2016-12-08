@@ -16,42 +16,42 @@
 
   <body>
 
-  <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top">
 
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-        </button>
-      <a class="navbar-brand" href="<%= home_path %>">
-          <%= image_tag "logo-main.png", class: "logo-nav" %>
-      </a>
-    </div>
-      <!-- <div class="navbar-collapse collapse" id="petfinder-navbar">
-      Id must be nav of the bootstrap mobile nav doesn't work  -->
-      <div id="navbar" class="navbar-collapse collapse" >
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to 'Lost Your Pet?', new_pet_path %></li>
-          <li><%= link_to 'All Lost Pets', pets_path %></li>
-          <li><%= link_to 'Spotted a pet?', new_sighting_path %></li>
-          <li><%= link_to 'All Spotted Pets', sightings_path %></li>
-          <% unless user_signed_in? %>
-            <li> <a class="btn " data-toggle="modal" data-target="#SignIn"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>Log In</a></li>
-            <li> <a class="btn btn-primary" data-toggle="modal" data-target="#SignUp">Sign Up</a></li>
+          </button>
+          <a class="navbar-brand" href="<%= home_path %>">
+            <%= image_tag "logo-main.png", class: "logo-nav" %>
+          </a>
+        </div>
+        <!-- <div class="navbar-collapse collapse" id="petfinder-navbar">
+          Id must be nav of the bootstrap mobile nav doesn't work  -->
+          <div id="navbar" class="navbar-collapse collapse" >
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to 'Lost Your Pet?', new_pet_path %></li>
+              <li><%= link_to 'All Lost Pets', pets_path %></li>
+              <li><%= link_to 'Spotted a pet?', new_sighting_path %></li>
+              <li><%= link_to 'All Spotted Pets', sightings_path %></li>
+              <% unless user_signed_in? %>
+                <li> <a class="btn " data-toggle="modal" data-target="#SignIn"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>Log In</a></li>
+                <li> <a class="btn btn-primary" data-toggle="modal" data-target="#SignUp">Sign Up</a></li>
 
-          <% else %>
-            <!-- <li>
-              <p class="navbar-text"><%= current_user.first_name %></p>
-            </li> -->
+              <% else %>
+                <!-- <li>
+                  <p class="navbar-text"><%= current_user.first_name %></p>
+                </li> -->
 
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= current_user.first_name %> <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li> <%= link_to 'Your Reports', users_path %>
-                      <li role="separator" class="divider"></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= current_user.first_name %> <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li> <%= link_to 'Your Reports', users_path %>
+                    <li role="separator" class="divider"></li>
                     <li>
                       <%= link_to sessions_path, method: :delete do %>
                         <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sign out
@@ -59,59 +59,59 @@
                     </li>
 
 
-                </ul>
-              </li>
+                  </ul>
+                </li>
 
 
 
 
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+          <% if flash[:alert].present? %>
+            <div class="alert alert-danger" style="margin-top:30px;">
+              <%= flash[:alert] %>
+            </div>
           <% end %>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class="container">
-    <div class="col-md-6 col-md-offset-3">
-      <% if flash[:alert].present? %>
-        <div class="alert alert-danger" style="margin-top:30px;">
-          <%= flash[:alert] %>
+
+          <% if flash[:notice].present? %>
+            <div class="alert alert-success" style="margin-top:30px;">
+              <%= flash[:notice] %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
 
-      <% if flash[:notice].present? %>
-        <div class="alert alert-success" style="margin-top:30px;">
-          <%= flash[:notice] %>
+      <%= yield %>
+
+      <%= render 'shared/sign_up' %>
+      <%= render 'shared/sign_in' %>
+
+      <div class="footer">
+        <div class="container">
+          <div class="col-md-4">
+            <ul>
+              <li><%= link_to 'Lost Your Pet?', new_pet_path %></li>
+              <li><%= link_to 'All Lost Pets', pets_path %></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul>
+              <li><%= link_to 'Spotted a pet?', new_sighting_path %></li>
+              <li><%= link_to 'All Spotted Pets', sightings_path %></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <a class="navbar-brand" href="<%= home_path %>">
+              <%= image_tag "logo-main.png", class: "logo-nav" %>
+            </a>
+          </div>
         </div>
-      <% end %>
-    </div>
-  </div>
-
-  <%= yield %>
-
-<%= render 'shared/sign_up' %>
-<%= render 'shared/sign_in' %>
-
-  <div class="footer">
-    <div class="container">
-      <div class="col-md-4">
-        <ul>
-          <li><%= link_to 'Lost Your Pet?', new_pet_path %></li>
-          <li><%= link_to 'All Lost Pets', pets_path %></li>
-        </ul>
+        <%= render 'layouts/footer' %>
       </div>
-      <div class="col-md-4">
-        <ul>
-        <li><%= link_to 'Spotted a pet?', new_sighting_path %></li>
-        <li><%= link_to 'All Spotted Pets', sightings_path %></li>
-          </ul>
-      </div>
-      <div class="col-md-4">
-        <a class="navbar-brand" href="<%= home_path %>">
-            <%= image_tag "logo-main.png", class: "logo-nav" %>
-        </a>
-      </div>
-    </div>
-    <%= render 'layouts/footer' %>
-  </div>
-  </body>
-</html>
+    </body>
+  </html>
