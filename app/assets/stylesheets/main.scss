@@ -58,25 +58,34 @@ table {
   }
 }
 
-.footer{
+footer {
   padding: 29px;
   background: #09274b;
 
-
-
-  ul{
+  ul {
     padding-top: 20px;
-    li{
+    li {
       list-style:none;
     }
 
-    a{
-      color:white;
-      padding: 5px;
-      display: block;
+    a {
+      color: White;
     }
   }
 
+  .footer-copyright {
+    margin: 0;
+    color: White;
+  }
+
+  .footer-social-links {
+    > li:not(:last-child) {
+      margin-right: 20px;
+    }
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
 }
 
 .thumbnail{
@@ -135,5 +144,3 @@ table {
 .sign-in p:last-child {
   margin-top: 25px;
 }
-
-
