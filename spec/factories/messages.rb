@@ -1,9 +1,6 @@
 FactoryGirl.define do
-
-
   factory :message do
     association :pet, factory: :pet
-    body "MyString"
-
+    body { Faker::Company.catch_phrase }
   end
 end
