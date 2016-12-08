@@ -8,8 +8,7 @@ class SightingsController < ApplicationController
 
   def new
     if params[:pet_id].present?
-      # render plain: " find pet_id"
-      @pet = Pet.find params[:pet_id]
+      @pet = Pet.friendly.find params[:pet_id]
       @sighting = Sighting.new
       @sighting.pet_type = @pet.pet_type
       @sighting.pet_id = params[:pet_id]
@@ -24,7 +23,11 @@ class SightingsController < ApplicationController
       if @sighting.pet_id.present?
         SightingsMailer.notify_pet_owner(@sighting).deliver_now
       end
-      redirect_to pets_path, notice: 'Thanks for your colaboration! Pet owners will be notified. Have You seen any of those pets?'
+      redirect_to(
+        pets_path,
+        notice: 'Thanks for your colaboration! Pet owners will be notified.'\
+        ' Have You seen any of those pets?'
+      )
     else
       render :new
     end
@@ -37,6 +40,7 @@ class SightingsController < ApplicationController
   end
 
   def update
+    @sighting.slug = nil
     if @sighting.update sighting_params
       redirect_to sighting_path(@sighting)
     else
@@ -52,7 +56,8 @@ class SightingsController < ApplicationController
   private
 
   def set_defaults
-    @pet_type = ['Dog', 'Cat', 'Bird', 'Guinea Pig', 'Hamster', 'Iguana', 'Snake', 'Other']
+    @pet_type = ['Dog', 'Cat', 'Bird', 'Guinea Pig',
+                 'Hamster', 'Iguana', 'Snake', 'Other']
 
     @size = %w(Small Medium Big)
 
@@ -64,6 +69,17 @@ class SightingsController < ApplicationController
   end
 
   def sighting_params
-    params.require(:sighting).permit([:pet_type, :last_seen_at, :date_time, :long, :lat, :note, :image, :name, :contact, :pet_id])
+    params.require(:sighting).permit([:pet_type,
+                                      :last_seen_time,
+                                      :last_seen_date,
+                                      :color,
+                                      :size,
+                                      :long,
+                                      :lat,
+                                      :note,
+                                      :image,
+                                      :name,
+                                      :contact,
+                                      :pet_id])
   end
 end

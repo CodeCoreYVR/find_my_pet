@@ -1,7 +1,6 @@
 class MessagesController < ApplicationController
   def create
-
-    @pet = Pet.find(params[:pet_id])
+    @pet = Pet.friendly.find(params[:pet_id])
     message_params = params.require(:message).permit(:body)
     @message = Message.new message_params
     @message.pet = @pet
