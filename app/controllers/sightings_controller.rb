@@ -11,7 +11,7 @@ class SightingsController < ApplicationController
       @pet = Pet.friendly.find params[:pet_id]
       @sighting = Sighting.new
       @sighting.pet_type = @pet.pet_type
-      @sighting.pet_id = params[:pet_id]
+      @sighting.pet_id = @pet.id
     else
       @sighting = Sighting.new
     end
@@ -21,7 +21,7 @@ class SightingsController < ApplicationController
     @sighting = Sighting.new sighting_params
     if @sighting.save
       if @sighting.pet_id.present?
-        SightingsMailer.notify_pet_owner(@sighting).deliver_now
+        SightingsMailer.notify_pet_owner(@sighting).deliver_later
       end
       redirect_to(
         pets_path,
