@@ -278,7 +278,7 @@ var closeAllInfoWindows = function() {
 
 var getLostPets = function(){
   // Get all the lost pets and draw markers on the map
-  $.get('/api/v1/pets', (data) => {
+  $.get('/api/v1/pets', function (data) {
     window.globals.allpets = data;
     // console.log(globals.pets);
     if (!$('#show-map').html() && !$('#sightings-map').html()){
@@ -300,7 +300,7 @@ var getCloseLostPets = function(){
   // Get all the lost pets and draw markers on the map
   $.get('/api/v1/pets',
     {user_lat: globals.location.lat, user_lng: globals.location.lng},
-    (data) => {
+    function (data) {
     window.globals.pets = data;
     console.log(data)
 
@@ -322,7 +322,7 @@ var getPetsInView = function(bounds){
      bottom: sw.lat,
      left: sw.lng,
      right: ne.lng},
-    (data) => {
+    function (data) {
     window.globals.pets = data;
     for (var i=0; i < data.length; i++){
 

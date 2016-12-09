@@ -26,8 +26,9 @@ $('li').click(function(){
 
 var getLostPets = function(){
   // Get all the lost pets and draw markers on the map
-  $.get('/api/v1/pets', (data) => {
+  $.get('/api/v1/pets', function (data) {
     window.globals.allpets = data;
+
     for (var i=0; i < data.length; i++){
       addLostPetsMarker({lat:data[i].lat, lng: data[i].lng}, map, data[i].name);
     }
