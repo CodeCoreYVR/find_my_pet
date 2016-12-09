@@ -53,12 +53,12 @@ gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'rspec-rails'
+  gem 'factory_girl_rails'
   gem 'pry'
   gem 'pry-rails'
-  gem 'rspec'
   gem 'rails-controller-testing'
-  gem 'factory_girl_rails'
+  gem 'rspec'
+  gem 'rspec-rails'
   gem 'rubocop', '~> 0.45.0'
   gem 'rubocop-rspec'
 end

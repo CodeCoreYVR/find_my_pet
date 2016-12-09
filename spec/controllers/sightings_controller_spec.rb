@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe SightingsController, type: :controller do
+  let(:pet) { create(:pet) }
+
   describe '#index' do
     it 'renders index page' do
       get :index
@@ -9,7 +11,6 @@ RSpec.describe SightingsController, type: :controller do
   end
 
   describe '#new' do
-    let(:pet) { create(:pet) }
     context 'with existing reported lost pet' do
       it 'renders new template' do
         get :new, params: {
