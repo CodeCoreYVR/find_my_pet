@@ -19,7 +19,7 @@ $('li').click(function(){
   for (var i = 0; i < window.globals.allpets.length; i++) {
     if (petArray[i].id == petId) {
       $('#sighting_pet_type').val(petArray[i].pet_type);
-      $('#sighting_note').val(`Color: ${petArray[i].color}, Breed: ${petArray[i].breed}`);
+      $('#sighting_note').val('Color: ' + petArray[i].color + ', Breed: ' + petArray[i].breed);
     }
   }
 });

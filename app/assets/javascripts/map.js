@@ -1,16 +1,16 @@
-const info =
-`<div id = content>
-  <div id = "photo" style="float: left">
-    <img src="https://www.dogstrust.org.uk/sponsor/_dogs/digby-assets/v800_digby01.jpg" alt="dog" height="160" width="120">
-  </div>
-  <div id="pet-info" style="float: right; padding: 1em;">
-    <h2>Dog Name</h2>
-    <h5>Type</h5>
-    <p>lost on: 1990-01-01<p>
-    <p></p>
-  </div>
-
-</div>`;
+const info = ' \
+<div id = content> \
+  <div id = "photo" style="float: left"> \
+    <img src="https://www.dogstrust.org.uk/sponsor/_dogs/digby-assets/v800_digby01.jpg" alt="dog" height="160" width="120"> \
+  </div> \
+  <div id="pet-info" style="float: right; padding: 1em;"> \
+    <h2>Dog Name</h2> \
+    <h5>Type</h5> \
+    <p>lost on: 1990-01-01<p> \
+    <p></p> \
+  </div> \
+ \
+</div>';
 
 var mapstyle = [
 {"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"administrative.country","elementType":"labels.text.fill","stylers":[{"hue":"#ff0000"}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#ff0000"}]},{"featureType":"administrative.land_parcel","elementType":"labels.text.fill","stylers":[{"color":"#ff0000"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"hue":"#ff0000"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"weight":"0.90"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ababab"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"weight":"0.30"},{"visibility":"off"},{"hue":"#ff0000"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"color":"#ff0000"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"#ff0000"},{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#838383"},{"visibility":"on"}]}
@@ -153,8 +153,8 @@ function initMap() {
               }
 
             // getCloseLostPets();
-            $("#lat").val(`${pos.lat}`);
-            $("#lng").val(`${pos.lng}`);
+            $("#lat").val(pos.lat || pos.lat.toString());
+            $("#lng").val(post.lng || pos.lng.toString());
 
 
           }, function() {
@@ -174,7 +174,6 @@ var infoWindows = [];
 
 // coords in the form: {lat:123.4141, lng: 30.321}
 // map is current map
-// info in the form: {`<div>abc</div>...`}
 function addInfoWindow(coords, map, info, type){
 // init icons, should be defiend outside of add info window block
 var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
